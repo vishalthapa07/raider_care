@@ -1,0 +1,509 @@
+[
+  {
+    "id": "D001",
+    "name": "Common Cold",
+    "category": "Respiratory",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "runny nose",
+      "sneezing",
+      "sore throat",
+      "mild cough",
+      "congestion",
+      "stuffy nose",
+      "low fever"
+    ],
+    "description": "A mild viral infection of the nose and throat. Usually clears up on its own within a week.",
+    "advice": "Rest, fluids, and over-the-counter cold medicine. See a provider if symptoms last beyond 10 days.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D002",
+    "name": "Seasonal Flu",
+    "category": "Respiratory",
+    "seriousness": "urgent",
+    "symptoms": [
+      "fever",
+      "chills",
+      "body ache",
+      "muscle ache",
+      "fatigue",
+      "headache",
+      "dry cough",
+      "high fever"
+    ],
+    "description": "A viral infection that hits harder and faster than a cold, often with sudden fever and exhaustion.",
+    "advice": "Rest and fluids for most cases. Seek care quickly if you're high-risk or symptoms worsen after a few days.",
+    "care": {
+      "department": "Urgent Care Center at UMC",
+      "instruction": "Go in today — no appointment needed.",
+      "address": "808 Joliet Ave, Suite 110, Lubbock, TX 79415",
+      "phone": "(806) 761-0545",
+      "hours": "Extended hours daily — call ahead to confirm, hours can vary",
+      "provider": "Urgent care physician on duty",
+      "notes": "Part of UMC Health System, the same system as Student Health Services, so records can transfer."
+    }
+  },
+  {
+    "id": "D003",
+    "name": "Fever (Unspecified)",
+    "category": "General",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "fever",
+      "warm skin",
+      "sweating",
+      "shivering",
+      "mild headache"
+    ],
+    "description": "A temperature above normal, usually a sign the body is fighting something off.",
+    "advice": "Monitor temperature and stay hydrated. Seek care if fever exceeds 103°F or lasts more than 3 days.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D004",
+    "name": "Migraine",
+    "category": "Neurological",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "headache",
+      "throbbing head pain",
+      "light sensitivity",
+      "nausea",
+      "blurred vision",
+      "aura"
+    ],
+    "description": "A recurring, often one-sided headache that can come with light sensitivity and nausea.",
+    "advice": "Rest in a dark quiet room and stay hydrated. See a provider if this is a new or unusually severe headache.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D005",
+    "name": "Gastroenteritis (Stomach Flu)",
+    "category": "Gastrointestinal",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "nausea",
+      "vomiting",
+      "diarrhea",
+      "stomach cramps",
+      "stomach ache",
+      "low fever"
+    ],
+    "description": "Inflammation of the stomach and intestines, usually from a virus, causing stomach upset.",
+    "advice": "Stay hydrated with small sips of water or electrolytes. Seek care if you can't keep fluids down for 24 hours.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D006",
+    "name": "Food Poisoning",
+    "category": "Gastrointestinal",
+    "seriousness": "urgent",
+    "symptoms": [
+      "vomiting",
+      "diarrhea",
+      "stomach cramps",
+      "nausea",
+      "fever",
+      "weakness"
+    ],
+    "description": "Illness caused by eating contaminated food, with symptoms usually starting within hours.",
+    "advice": "Hydrate and rest. Seek urgent care for bloody stool, high fever, or signs of dehydration.",
+    "care": {
+      "department": "Urgent Care Center at UMC",
+      "instruction": "Go in today — no appointment needed.",
+      "address": "808 Joliet Ave, Suite 110, Lubbock, TX 79415",
+      "phone": "(806) 761-0545",
+      "hours": "Extended hours daily — call ahead to confirm, hours can vary",
+      "provider": "Urgent care physician on duty",
+      "notes": "Part of UMC Health System, the same system as Student Health Services, so records can transfer."
+    }
+  },
+  {
+    "id": "D007",
+    "name": "Mild Allergic Reaction",
+    "category": "Allergy/Immune",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "itchy skin",
+      "rash",
+      "hives",
+      "sneezing",
+      "watery eyes",
+      "mild swelling"
+    ],
+    "description": "A localized immune reaction to something like pollen, food, or a skin irritant.",
+    "advice": "An antihistamine usually helps. Watch closely for any trouble breathing or swelling of the face or throat.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D008",
+    "name": "Anaphylaxis (Severe Allergic Reaction)",
+    "category": "Allergy/Immune",
+    "seriousness": "emergency",
+    "symptoms": [
+      "trouble breathing",
+      "throat swelling",
+      "face swelling",
+      "tight chest",
+      "dizziness",
+      "widespread hives",
+      "can't breathe"
+    ],
+    "description": "A life-threatening allergic reaction that can close the airway within minutes.",
+    "advice": "Use an epinephrine auto-injector if available and call 911 immediately. Do not wait to see if it improves.",
+    "care": {
+      "department": "University Medical Center — Emergency Room",
+      "instruction": "Call 911 or get to the ER immediately. Do not drive yourself if symptoms are severe.",
+      "address": "602 Indiana Ave, Lubbock, TX 79415",
+      "phone": "(806) 775-8200",
+      "hours": "Open 24/7 — Level I Trauma Center",
+      "provider": "Emergency medicine team on duty",
+      "notes": "UMC is TTUHSC's primary teaching hospital and the region's only Level I trauma center."
+    }
+  },
+  {
+    "id": "D009",
+    "name": "Asthma Attack",
+    "category": "Respiratory",
+    "seriousness": "urgent",
+    "symptoms": [
+      "wheezing",
+      "shortness of breath",
+      "tight chest",
+      "coughing fits",
+      "trouble breathing"
+    ],
+    "description": "A flare-up that narrows the airways, making it hard to breathe normally.",
+    "advice": "Use a rescue inhaler if prescribed. If it isn't helping or lips/fingertips turn blue, this becomes an emergency.",
+    "care": {
+      "department": "Urgent Care Center at UMC",
+      "instruction": "Go in today — no appointment needed.",
+      "address": "808 Joliet Ave, Suite 110, Lubbock, TX 79415",
+      "phone": "(806) 761-0545",
+      "hours": "Extended hours daily — call ahead to confirm, hours can vary",
+      "provider": "Urgent care physician on duty",
+      "notes": "Part of UMC Health System, the same system as Student Health Services, so records can transfer."
+    }
+  },
+  {
+    "id": "D010",
+    "name": "Possible Cardiac Event",
+    "category": "Cardiovascular",
+    "seriousness": "emergency",
+    "symptoms": [
+      "chest pain",
+      "chest pressure",
+      "pain in left arm",
+      "shortness of breath",
+      "cold sweat",
+      "jaw pain",
+      "chest tightness"
+    ],
+    "description": "Symptoms that can indicate a heart attack or other serious cardiac event.",
+    "advice": "Call 911 immediately. Do not drive yourself. Chew an aspirin only if advised by emergency dispatch.",
+    "care": {
+      "department": "University Medical Center — Emergency Room",
+      "instruction": "Call 911 or get to the ER immediately. Do not drive yourself if symptoms are severe.",
+      "address": "602 Indiana Ave, Lubbock, TX 79415",
+      "phone": "(806) 775-8200",
+      "hours": "Open 24/7 — Level I Trauma Center",
+      "provider": "Emergency medicine team on duty",
+      "notes": "UMC is TTUHSC's primary teaching hospital and the region's only Level I trauma center."
+    }
+  },
+  {
+    "id": "D011",
+    "name": "Concussion",
+    "category": "Neurological",
+    "seriousness": "urgent",
+    "symptoms": [
+      "head injury",
+      "confusion",
+      "dizziness",
+      "headache after hit",
+      "memory loss",
+      "nausea after fall",
+      "blurred vision"
+    ],
+    "description": "A mild traumatic brain injury usually from a blow to the head, needing prompt evaluation.",
+    "advice": "Stop all activity and get evaluated the same day, especially after any loss of consciousness.",
+    "care": {
+      "department": "Urgent Care Center at UMC",
+      "instruction": "Go in today — no appointment needed.",
+      "address": "808 Joliet Ave, Suite 110, Lubbock, TX 79415",
+      "phone": "(806) 761-0545",
+      "hours": "Extended hours daily — call ahead to confirm, hours can vary",
+      "provider": "Urgent care physician on duty",
+      "notes": "Part of UMC Health System, the same system as Student Health Services, so records can transfer."
+    }
+  },
+  {
+    "id": "D012",
+    "name": "Sprain or Strain",
+    "category": "Musculoskeletal",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "joint pain",
+      "swelling",
+      "bruising",
+      "twisted ankle",
+      "limited movement",
+      "muscle pain"
+    ],
+    "description": "Stretched or torn ligaments or muscles, commonly from sports or a fall.",
+    "advice": "Rest, ice, compression, and elevation. See a provider if you can't bear weight or the pain is severe.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D013",
+    "name": "Strep Throat",
+    "category": "Infectious Disease",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "sore throat",
+      "painful swallowing",
+      "swollen glands",
+      "fever",
+      "white patches on throat"
+    ],
+    "description": "A bacterial throat infection that needs antibiotics to clear and to avoid complications.",
+    "advice": "See a provider for a strep test. Antibiotics are typically needed if it tests positive.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D014",
+    "name": "COVID-19 Symptoms",
+    "category": "Infectious Disease",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "fever",
+      "dry cough",
+      "loss of taste",
+      "loss of smell",
+      "fatigue",
+      "sore throat",
+      "congestion"
+    ],
+    "description": "Symptoms consistent with a COVID-19 infection, ranging from mild to more serious.",
+    "advice": "Test and isolate. Seek urgent care if breathing becomes difficult or symptoms sharply worsen.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D015",
+    "name": "Urinary Tract Infection",
+    "category": "General",
+    "seriousness": "non-urgent",
+    "symptoms": [
+      "burning urination",
+      "frequent urination",
+      "pelvic pain",
+      "cloudy urine",
+      "urgent need to pee"
+    ],
+    "description": "A bacterial infection of the urinary tract, common and very treatable.",
+    "advice": "See a provider for testing and antibiotics. Seek urgent care if fever or back pain develops.",
+    "care": {
+      "department": "Texas Tech Student Health Services",
+      "instruction": "Schedule a visit at Student Health Services this week.",
+      "address": "Student Wellness Center, 1003 Flint Ave (corner of Flint & Main), Lubbock, TX 79409",
+      "phone": "(806) 743-2848",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Primary care physician on duty",
+      "notes": "First-time patients register by phone. An after-hours on-call physician is reachable at this same number."
+    }
+  },
+  {
+    "id": "D016",
+    "name": "Dehydration",
+    "category": "General",
+    "seriousness": "urgent",
+    "symptoms": [
+      "extreme thirst",
+      "dizziness",
+      "dark urine",
+      "dry mouth",
+      "fatigue",
+      "confusion",
+      "rapid heartbeat"
+    ],
+    "description": "A drop in body fluids severe enough to affect normal function.",
+    "advice": "Rehydrate with water or electrolytes right away. Seek urgent care for confusion or fainting.",
+    "care": {
+      "department": "Urgent Care Center at UMC",
+      "instruction": "Go in today — no appointment needed.",
+      "address": "808 Joliet Ave, Suite 110, Lubbock, TX 79415",
+      "phone": "(806) 761-0545",
+      "hours": "Extended hours daily — call ahead to confirm, hours can vary",
+      "provider": "Urgent care physician on duty",
+      "notes": "Part of UMC Health System, the same system as Student Health Services, so records can transfer."
+    }
+  },
+  {
+    "id": "D017",
+    "name": "Alcohol Poisoning",
+    "category": "General",
+    "seriousness": "emergency",
+    "symptoms": [
+      "vomiting while unconscious",
+      "slow breathing",
+      "confusion",
+      "pale skin",
+      "seizures",
+      "unresponsive",
+      "cannot wake up"
+    ],
+    "description": "A dangerous, sometimes fatal reaction to excessive alcohol intake.",
+    "advice": "Call 911 immediately. Turn the person on their side and stay with them until help arrives.",
+    "care": {
+      "department": "University Medical Center — Emergency Room",
+      "instruction": "Call 911 or get to the ER immediately. Do not drive yourself if symptoms are severe.",
+      "address": "602 Indiana Ave, Lubbock, TX 79415",
+      "phone": "(806) 775-8200",
+      "hours": "Open 24/7 — Level I Trauma Center",
+      "provider": "Emergency medicine team on duty",
+      "notes": "UMC is TTUHSC's primary teaching hospital and the region's only Level I trauma center."
+    }
+  },
+  {
+    "id": "D018",
+    "name": "Anxiety Attack",
+    "category": "Mental Health",
+    "seriousness": "mental-health",
+    "symptoms": [
+      "racing heart",
+      "panic",
+      "can't breathe well",
+      "shaking",
+      "sense of doom",
+      "sweating",
+      "feeling overwhelmed"
+    ],
+    "description": "A sudden surge of intense fear or anxiety with strong physical symptoms.",
+    "advice": "Try slow breathing and grounding techniques. Campus counseling can help you build longer-term tools.",
+    "care": {
+      "department": "Texas Tech Student Counseling Center",
+      "instruction": "Reach out for an appointment or a walk-in screening.",
+      "address": "Student Wellness Center, 2nd Floor, Room 201, Lubbock, TX 79409",
+      "phone": "(806) 742-3674",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Licensed counselor on duty",
+      "notes": "Confidential and free for enrolled students."
+    }
+  },
+  {
+    "id": "D019",
+    "name": "Depression / Low Mood",
+    "category": "Mental Health",
+    "seriousness": "mental-health",
+    "symptoms": [
+      "hopeless",
+      "no energy",
+      "can't concentrate",
+      "sleeping too much",
+      "not eating",
+      "withdrawn",
+      "sad all the time"
+    ],
+    "description": "A persistent low mood that affects daily functioning, energy, and motivation.",
+    "advice": "You don't have to manage this alone. Campus counseling offers confidential support and next steps.",
+    "care": {
+      "department": "Texas Tech Student Counseling Center",
+      "instruction": "Reach out for an appointment or a walk-in screening.",
+      "address": "Student Wellness Center, 2nd Floor, Room 201, Lubbock, TX 79409",
+      "phone": "(806) 742-3674",
+      "hours": "Mon–Fri, 8:00 AM – 5:00 PM",
+      "provider": "Licensed counselor on duty",
+      "notes": "Confidential and free for enrolled students."
+    }
+  },
+  {
+    "id": "D020",
+    "name": "Suicidal Thoughts / Crisis",
+    "category": "Mental Health",
+    "seriousness": "mental-health-emergency",
+    "symptoms": [
+      "suicidal",
+      "want to die",
+      "self harm",
+      "hurting myself",
+      "ending it",
+      "no reason to live"
+    ],
+    "description": "Thoughts of suicide or self-harm are a mental health emergency and deserve immediate support.",
+    "advice": "Call or text 988 right now, or reach campus counseling's crisis line. You deserve support today.",
+    "care": {
+      "department": "988 Suicide & Crisis Lifeline",
+      "instruction": "Call or text 988 right now. If there's immediate danger, call 911.",
+      "address": "National line — available anywhere in the U.S.",
+      "phone": "988",
+      "hours": "Open 24/7",
+      "provider": "Crisis counselor on duty",
+      "notes": "Free, confidential, and staffed around the clock. Texas Tech's Student Counseling Center also runs a walk-in crisis line during business hours."
+    }
+  }
+]

@@ -8,7 +8,7 @@
 				"container": "flex"
 			},
 			"title": "We care about your <strong>health</strong> with the highest professionalism",
-			"subtitle": "The most modern clinic in the heart of the city. We combine advanced medical experience with innovative equipment for your comfort.",
+			"subtitle": "RaiderCare is your smart university health companion, guiding you to the right health and emergency resources quickly, safely, and confidently.",
 			"image": "hero-image.webp",
 			"buttons": [
 				{
@@ -26,79 +26,36 @@
 			]
 		},
 
-		"services": {
-			"config": {
-				"class": "section--centered",
-				"background": "bg-2"
-			},
-			"sectionHeader": {
-				"eyebrow": "Our services",
-				"title": "Comprehensive Medical Care"
-			},
-			"items": [
-				{
-					"title": "Crardiology",
-					"text": "Complete diagnostics of the cardiovascular system and individual treatment plans.",
-					"icon": "cardio",
-					"link": {
-						"url": "/services/cardiology",
-						"text": "Learn more",
-						"icon": "arrow-right"
-					}
-				},
-				{
-					"title": "Neurology",
-					"text": "Expert treatment of nervous system diseases using modern medical techniques.",
-					"icon": "brain",
-					"link": {
-						"url": "/services/neurology",
-						"text": "Learn more",
-						"icon": "arrow-right"
-					}
-				},
-				{
-					"title": "Laboratory",
-					"text": "Fast and accurate laboratory tests based on our own modern diagnostic center.",
-					"icon": "farma",
-					"link": {
-						"url": "/services/laboratory",
-						"text": "Learn more",
-						"icon": "arrow-right"
-					}
-				}
-			]
-		},
-
 		"why": {
 			"config": {
 				"class": "section--centered",
 				"background": "bg-1"
 			},
 			"sectionHeader": {
-				"title": "Why patients choose RaiderCare",
-				"subtitle": "We combine decades of medical expertise with the latest technological advancements to provide world-class healthcare."
+				"title": "Why Students Choose RaiderCare",
+				"subtitle": "From understanding a health concern to locating the appropriate service, RaiderCare makes university healthcare navigation simple, accessible, and student-focused."
 			},
 			"reasons": [
 				{
 					"icon": "case",
-					"title": "Experienced Doctors",
-					"text": "Our team consists of high-category physicians and candidates of medical sciences who regularly undergo internships in leading clinics in Europe and the USA. We guarantee a professional approach to every patient."
+					"title": "Smart Health Guidance",
+					"text": "Describe your concern using text and receive clear guidance based on your symptoms, severity, and duration."
 				},
 				{
 					"icon": "microscope",
-					"title": "Modern Equipment",
-					"text": "We utilize the latest generation of diagnostic and surgical equipment from world leaders: Siemens, GE Healthcare, and Philips.",
+					"title": "Safety-First Support",
+					"text": "RaiderCare checks for important warning signs and directs you to emergency, urgent-care, university clinic, or mental-health resources.",
 					"image": "equipment.webp"
 				},
 				{
 					"icon": "calendar",
-					"title": "24/7 Online Booking",
-					"text": "Schedule your visit anytime through our convenient portal."
+					"title": "24/7 Accessibility",
+					"text": "Access health guidance and essential contact information anytime through a simple, student-friendly platform."
 				},
 				{
 					"icon": "care",
-					"title": "Personalized Care",
-					"text": "Individual treatment plans tailored to your unique health needs."
+					"title": "Personalized Navigation",
+					"text": "Receive resource recommendations based on your specific concern, urgency level, location, and university needs."
 				}
 			]
 		},
@@ -109,20 +66,20 @@
 			},
 			"data": [
 				{
-					"amount": "12+",
-					"caption": "Years of Experience"
-				},
-				{
-					"amount": "50k+",
-					"caption": "Happy Patients"
-				},
-				{
-					"amount": "85",
-					"caption": "Expert Doctors"
+					"amount": "4",
+					"caption": "Levels of Care"
 				},
 				{
 					"amount": "24/7",
-					"caption": "Modern Facilities"
+					"caption": "Health Guidance"
+				},
+				{
+					"amount": "Text",
+					"caption": "Easy Concern Input"
+				},
+				{
+					"amount": "911 & 988",
+					"caption": "Emergency Support"
 				}
 			]
 		},
@@ -188,11 +145,11 @@
 				"class": "section--centered",
 				"background": "bg-2"
 			},
-			"title": "Ready To Get Professional Help?",
-			"text": "Sign up for a consultation today and start your path to a healthy life with RaiderCare experts.",
+			"title": "Not Sure Where to Find Care?",
+			"text": "Tell RaiderCare what you are experiencing, and it will guide you to the appropriate university or nearby health resource.",
 			"buttons": [
 				{
-					"text": "Find you health expert",
+					"text": "Describe Your Concern",
 					"variant": "solid",
 					"color": "white",
 					"url": "/care-finder"

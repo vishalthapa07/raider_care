@@ -1,18 +1,920 @@
 ---
 import "../styles/global.css";
 import Layout from "@layouts/Layout.astro";
-import HeroSection from "@components/blocks/HeroSection.astro";
-import ServicesSection from "@components/blocks/ServicesSection.astro";
-import WhySection from "@components/blocks/WhySection.astro";
-import StatisticsSection from "@components/blocks/StatisticsSection.astro";
-import TestimonialsSection from "@components/blocks/TestimonialsSection.astro";
-import CtaSection from "@components/blocks/CtaSection.astro";
-import data from "../content/HomePage.json";
+import Container from "@ui/Container.astro";
+import conditions from "../content/careConditions.json";
+const categories = [...new Set(conditions.map((item) => item.category))].sort();
 ---
 
 <Layout
-  title={data.pageTitle}
-  description=`${data.pageTitle} description place here`
+  title="Care Finder | RaiderCare"
+  description="Find the appropriate university or nearby care resource."
 >
-  <h1>hello care provider</h1>
+  <section class="finder-hero">
+    <Container>
+      <div>
+        <span class="eyebrow"><i></i> Smart care navigation</span>
+        <h1>
+          Find the right care,<br /><strong>right when you need it.</strong>
+        </h1>
+        <p>
+          Tell us what you are experiencing. RaiderCare helps you identify the
+          next safe step and an appropriate care department.
+        </p>
+        <div class="trust">
+          <span>✓ Student-focused</span><span>✓ Private by design</span><span
+            >✓ Available anytime</span>
+        </div>
+      </div>
+      <aside class="notice">
+        <b>✦</b><div>
+          <strong>Navigation, not diagnosis</strong><p>
+            RaiderCare offers educational guidance. A healthcare professional
+            should make medical decisions.
+          </p>
+        </div>
+      </aside>
+    </Container>
+  </section>
+
+  <section class="finder-section">
+    <Container>
+      <div class="finder-card">
+        <div class="form-panel">
+          <span class="step"><b>1</b> Tell us what is going on</span>
+          <h2>How can we help today?</h2>
+          <p>Choose a common concern or describe symptoms in your own words.</p>
+          <label for="condition">Select a common concern</label>
+          <select id="condition">
+            <option value="">Choose a concern...</option>
+            {
+              categories.map((category) => (
+                <optgroup label={category}>
+                  {conditions
+                    .filter((x) => x.category === category)
+                    .map((x) => (
+                      <option value={x.id}>{x.name}</option>
+                    ))}
+                </optgroup>
+              ))
+            }
+          </select>
+          <div class="or"><span>or</span></div>
+          <label for="symptoms">Describe your symptoms</label>
+          <div class="input-wrap">
+            <textarea
+              id="symptoms"
+              rows="4"
+              placeholder="Example: I have a fever, sore throat, and body aches since yesterday..."
+            ></textarea>
+            <button
+              id="mic"
+              type="button"
+              title="Voice input"
+              aria-label="Use voice input">●</button
+            >
+          </div>
+          <small id="voice-status"
+            >Include symptoms, duration, and severity</small
+          >
+          <label class="common-label">Common symptoms</label>
+          <div class="chips">
+            {
+              [
+                "Fever",
+                "Headache",
+                "Sore throat",
+                "Cough",
+                "Nausea",
+                "Anxiety",
+              ].map((x) => (
+                <button type="button" data-symptom={x.toLowerCase()}>
+                  + {x}
+                </button>
+              ))
+            }
+          </div>
+          <button id="find-care" class="find-button" type="button"
+            >Find my care options <span>→</span></button
+          >
+          <p id="error" class="error" role="alert"></p>
+        </div>
+
+        <aside class="how-panel">
+          <span class="kicker">How RaiderCare works</span>
+          <h3>Clear guidance in three simple steps</h3>
+          <ol>
+            <li>
+              <b>01</b><div>
+                <strong>Share your concern</strong><p>
+                  Select a topic or describe your symptoms.
+                </p>
+              </div>
+            </li>
+            <li>
+              <b>02</b><div>
+                <strong>Safety check</strong><p>
+                  Red-flag symptoms are prioritized immediately.
+                </p>
+              </div>
+            </li>
+            <li>
+              <b>03</b><div>
+                <strong>Get connected</strong><p>
+                  See the care level, department, and contact details.
+                </p>
+              </div>
+            </li>
+          </ol>
+          <div class="emergency-help">
+            <b>!</b><div>
+              <strong>Is this an emergency?</strong><p>
+                Call 911 for severe chest pain, trouble breathing, uncontrolled
+                bleeding, loss of consciousness, or immediate danger.
+              </p><a href="tel:911">Call 911 now →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section id="results" class="results" hidden aria-live="polite">
+        <header>
+          <div>
+            <span class="step"><b>2</b> Your care guidance</span><h2
+              id="result-name"
+            >
+            </h2>
+          </div><button id="reset" type="button">Start over ↻</button>
+        </header>
+        <div class="result-grid">
+          <article class="result-card">
+            <div class="level">
+              <span id="badge"></span><small id="match-note"></small>
+            </div>
+            <p id="description" class="description"></p>
+            <div class="advice">
+              <b>✓</b><div>
+                <strong>What you can do now</strong><p id="advice"></p>
+              </div>
+            </div>
+            <div class="matched">
+              <strong>Symptoms considered</strong><div id="matched"></div>
+            </div>
+          </article>
+          <article class="result-card provider">
+            <div class="provider-title">
+              <b>✚</b><div>
+                <small>Recommended department</small><h3 id="department"></h3>
+              </div>
+            </div>
+            <p id="instruction" class="instruction"></p>
+            <dl>
+              <div><dt>Provider</dt><dd id="provider"></dd></div><div>
+                <dt>Hours</dt><dd id="hours"></dd>
+              </div><div><dt>Location</dt><dd id="address"></dd></div>
+            </dl>
+            <div class="actions">
+              <a id="call">Call now</a><a
+                id="map"
+                target="_blank"
+                rel="noreferrer">Directions ↗</a>
+            </div>
+            <p id="notes" class="notes"></p>
+          </article>
+        </div>
+        <p class="disclaimer">
+          This result is educational guidance based on the information provided.
+          If symptoms are severe, worsening, or you feel unsafe, call 911 or
+          seek immediate professional help.
+        </p>
+      </section>
+    </Container>
+  </section>
+  <script
+    type="application/json"
+    id="care-data"
+    set:html={JSON.stringify(conditions)}
+  />
 </Layout>
+
+<script>
+  type Condition = {
+    id: string;
+    name: string;
+    category: string;
+    seriousness: string;
+    symptoms: string[];
+    description: string;
+    advice: string;
+    care: {
+      department: string;
+      instruction: string;
+      address: string;
+      phone: string;
+      hours: string;
+      provider: string;
+      notes: string;
+    };
+  };
+  const data: Condition[] = JSON.parse(
+    document.getElementById("care-data")?.textContent || "[]",
+  );
+  const select = document.getElementById("condition") as HTMLSelectElement;
+  const input = document.getElementById("symptoms") as HTMLTextAreaElement;
+  const results = document.getElementById("results") as HTMLElement;
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[^a-z0-9\s']/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  const redFlags = [
+    "chest pain",
+    "chest pressure",
+    "can't breathe",
+    "cannot breathe",
+    "trouble breathing",
+    "unconscious",
+    "severe bleeding",
+    "throat swelling",
+    "face swelling",
+    "blue lips",
+    "seizure",
+  ];
+  const crisisFlags = [
+    "suicide",
+    "suicidal",
+    "kill myself",
+    "self harm",
+    "hurt myself",
+    "immediate danger",
+  ];
+
+  function match(text: string) {
+    const value = norm(text);
+    const crisis = crisisFlags.filter((x) => value.includes(x));
+    if (crisis.length)
+      return {
+        item: data.find((x) => x.id === "D020"),
+        found: crisis,
+        alert: true,
+      };
+    const danger = redFlags.filter((x) => value.includes(x));
+    if (danger.length) {
+      const id = value.includes("chest")
+        ? "D010"
+        : value.includes("swelling")
+          ? "D008"
+          : "";
+      return {
+        item:
+          data.find((x) => x.id === id) ||
+          data.find((x) => x.seriousness === "emergency"),
+        found: danger,
+        alert: true,
+      };
+    }
+    let item: Condition | undefined;
+    let found: string[] = [];
+    data.forEach((x) => {
+      const hits = x.symptoms.filter((s) => value.includes(norm(s)));
+      if (hits.length > found.length) {
+        item = x;
+        found = hits;
+      }
+    });
+    return { item, found, alert: false };
+  }
+  function text(id: string, value: string) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+  function show(
+    item: Condition,
+    found: string[],
+    symptomMode: boolean,
+    alert = false,
+  ) {
+    const labels: Record<string, string> = {
+      "non-urgent": "Non-urgent care",
+      urgent: "Urgent care",
+      emergency: "Emergency",
+      "mental-health": "Mental health support",
+      "mental-health-emergency": "Immediate crisis support",
+    };
+    text("result-name", item.name);
+    text("description", item.description);
+    text("advice", item.advice);
+    text("department", item.care.department);
+    text("instruction", item.care.instruction);
+    text("provider", item.care.provider);
+    text("hours", item.care.hours);
+    text("address", item.care.address);
+    text("notes", item.care.notes);
+    text(
+      "match-note",
+      alert
+        ? "Safety alert identified"
+        : symptomMode
+          ? "Closest symptom match"
+          : item.category,
+    );
+    const badge = document.getElementById("badge")!;
+    badge.textContent = labels[item.seriousness] || item.seriousness;
+    badge.className = `badge ${item.seriousness}`;
+    document.getElementById("matched")!.innerHTML = (
+      found.length ? found : item.symptoms.slice(0, 5)
+    )
+      .map((x) => `<span>${x}</span>`)
+      .join("");
+    const call = document.getElementById("call") as HTMLAnchorElement;
+    call.href = `tel:${item.care.phone.replace(/[^+\d]/g, "")}`;
+    call.textContent = `Call ${item.care.phone}`;
+    (document.getElementById("map") as HTMLAnchorElement).href =
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.care.address)}`;
+    results.hidden = false;
+    results.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  document.getElementById("find-care")?.addEventListener("click", () => {
+    text("error", "");
+    if (select.value) {
+      const item = data.find((x) => x.id === select.value);
+      if (item) show(item, [], false);
+      return;
+    }
+    if (!input.value.trim()) {
+      text(
+        "error",
+        "Please select a concern or describe at least one symptom.",
+      );
+      input.focus();
+      return;
+    }
+    const result = match(input.value);
+    if (result.item && result.found.length)
+      show(result.item, result.found, true, result.alert);
+    else {
+      const fallback = data.find((x) => x.id === "D003");
+      if (fallback)
+        show(
+          {
+            ...fallback,
+            name: "General health concern",
+            description:
+              "Your description does not closely match a condition in this demo. A primary care professional can assess your symptoms safely.",
+          },
+          [],
+          true,
+        );
+    }
+  });
+  document
+    .querySelectorAll<HTMLButtonElement>(".chips button")
+    .forEach((chip) =>
+      chip.addEventListener("click", () => {
+        const s = chip.dataset.symptom || "";
+        const list = input.value
+          .split(",")
+          .map((x) => x.trim())
+          .filter(Boolean);
+        const exists = list.some((x) => norm(x) === norm(s));
+        input.value = (
+          exists ? list.filter((x) => norm(x) !== norm(s)) : [...list, s]
+        ).join(", ");
+        chip.classList.toggle("active", !exists);
+      }),
+    );
+  document.getElementById("reset")?.addEventListener("click", () => {
+    select.value = "";
+    input.value = "";
+    results.hidden = true;
+    document
+      .querySelectorAll(".chips button")
+      .forEach((x) => x.classList.remove("active"));
+    document
+      .querySelector(".finder-card")
+      ?.scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("mic")?.addEventListener("click", () => {
+    const SR =
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
+    const status = document.getElementById("voice-status")!;
+    if (!SR) {
+      status.textContent = "Voice input is not supported in this browser";
+      return;
+    }
+    const r = new SR();
+    r.lang = "en-US";
+    status.textContent = "Listening…";
+    r.onresult = (e: any) => {
+      input.value = e.results[0][0].transcript;
+      status.textContent = "Voice added";
+    };
+    r.onerror = () => (status.textContent = "Could not capture voice");
+    r.start();
+  });
+</script>
+
+<style>
+  .finder-hero {
+    padding: 7rem var(--section-padding-inline) 5.5rem;
+    background: linear-gradient(120deg, #f1f6ff, #fff 60%, #edf4ff);
+    border-bottom: 1px solid #e2eaf5;
+  }
+  .finder-hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+  .finder-hero h1 {
+    font-size: clamp(3.8rem, 5vw, 6.2rem);
+    letter-spacing: -0.045em;
+  }
+  .finder-hero h1 strong {
+    color: var(--color-primary);
+  }
+  .finder-hero > div > div > p {
+    max-width: 65rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.7;
+  }
+  .eyebrow,
+  .kicker,
+  .step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: #1d54c7;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .eyebrow {
+    margin-bottom: 1.8rem;
+  }
+  .eyebrow i {
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    background: #23a667;
+    box-shadow: 0 0 0 0.5rem #dff5e9;
+  }
+  .trust {
+    display: flex;
+    gap: 2.4rem;
+    margin-top: 2.4rem;
+    color: #334155;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .notice {
+    display: flex;
+    max-width: 37rem;
+    padding: 2.2rem;
+    gap: 1.4rem;
+    border: 1px solid #dbe5f2;
+    border-radius: 1.8rem;
+    background: #ffffffd9;
+    box-shadow: 0 1.6rem 5rem #20497d14;
+  }
+  .notice > b,
+  .provider-title > b {
+    display: grid;
+    width: 4.6rem;
+    height: 4.6rem;
+    flex: 0 0 auto;
+    place-items: center;
+    color: #1d54c7;
+    border-radius: 1.2rem;
+    background: #e7eefb;
+  }
+  .notice strong {
+    color: #182238;
+  }
+  .notice p {
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.55;
+  }
+  .finder-section {
+    padding: 7rem var(--section-padding-inline) 9rem;
+    background: #f8fafc;
+  }
+  .finder-card {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    overflow: hidden;
+    border: 1px solid #dfe7f1;
+    border-radius: 2.8rem;
+    background: #fff;
+    box-shadow: 0 2rem 7rem #1f385816;
+  }
+  .form-panel,
+  .how-panel {
+    padding: clamp(3rem, 5vw, 5.5rem);
+  }
+  .step > b {
+    display: grid;
+    width: 2.8rem;
+    height: 2.8rem;
+    place-items: center;
+    color: #fff;
+    border-radius: 50%;
+    background: #1d54c7;
+  }
+  .form-panel h2 {
+    margin-top: 1.7rem;
+    font-size: 3.4rem;
+  }
+  .form-panel > p {
+    margin: 1rem 0 3rem;
+  }
+  .form-panel label {
+    display: block;
+    margin: 2rem 0 1rem;
+    color: #1e293b;
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+  select,
+  textarea {
+    width: 100%;
+    padding: 1.5rem;
+    color: #263349;
+    border: 1px solid #ccd7e5;
+    border-radius: 1.2rem;
+    background: #fff;
+    font: inherit;
+    outline: none;
+  }
+  select {
+    height: 5.5rem;
+  }
+  textarea {
+    padding-right: 6rem;
+    resize: vertical;
+  }
+  select:focus,
+  textarea:focus {
+    border-color: #1d54c7;
+    box-shadow: 0 0 0 0.4rem #e7eefb;
+  }
+  .or {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2.2rem 0;
+    color: #8791a0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  .or:before,
+  .or:after {
+    height: 1px;
+    flex: 1;
+    content: "";
+    background: #e4e9f0;
+  }
+  .input-wrap {
+    position: relative;
+  }
+  .input-wrap button {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    width: 4rem;
+    height: 4rem;
+    color: #1d54c7;
+    border: 0;
+    border-radius: 1rem;
+    background: #eaf1ff;
+    cursor: pointer;
+  }
+  .form-panel small {
+    display: block;
+    margin-top: 0.8rem;
+    color: #778397;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .chips button {
+    padding: 0.8rem 1.2rem;
+    color: #4d5c70;
+    border: 1px solid #d7e0ec;
+    border-radius: 2rem;
+    background: #fff;
+    cursor: pointer;
+  }
+  .chips button:hover,
+  .chips button.active {
+    color: #1645aa;
+    border-color: #8eadee;
+    background: #edf3ff;
+  }
+  .find-button {
+    display: flex;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 1.55rem;
+    justify-content: center;
+    gap: 1rem;
+    color: #fff;
+    border: 0;
+    border-radius: 1.2rem;
+    background: #1d54c7;
+    box-shadow: 0 0.8rem 2.4rem #1d54c73d;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .error {
+    min-height: 2rem !important;
+    margin: 1rem 0 0 !important;
+    color: #b42318 !important;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .how-panel {
+    color: #dbe8ff;
+    background: linear-gradient(150deg, #153b8d, #0b2458);
+  }
+  .how-panel .kicker {
+    color: #a9c5ff;
+  }
+  .how-panel h3 {
+    margin-top: 1.5rem;
+    color: #fff;
+    font-size: 2.8rem;
+  }
+  .how-panel ol {
+    display: flex;
+    margin-top: 3.5rem;
+    flex-direction: column;
+    gap: 2.7rem;
+  }
+  .how-panel li {
+    display: flex;
+    gap: 1.7rem;
+  }
+  .how-panel li > b {
+    color: #83aaff;
+  }
+  .how-panel li strong {
+    color: #fff;
+  }
+  .how-panel li p {
+    margin-top: 0.4rem;
+    color: #b9c9e7;
+    font-size: 1.35rem;
+  }
+  .emergency-help {
+    display: flex;
+    margin-top: 4rem;
+    padding: 1.8rem;
+    gap: 1.3rem;
+    border: 1px solid #ffb2a840;
+    border-radius: 1.5rem;
+    background: #941f183d;
+  }
+  .emergency-help > b {
+    display: grid;
+    width: 3.3rem;
+    height: 3.3rem;
+    flex: 0 0 auto;
+    place-items: center;
+    color: #7f1d1d;
+    border-radius: 50%;
+    background: #fecaca;
+  }
+  .emergency-help strong,
+  .emergency-help a {
+    color: #fff;
+  }
+  .emergency-help p {
+    margin: 0.6rem 0 1rem;
+    color: #f1d1ce;
+    font-size: 1.25rem;
+  }
+  .results {
+    margin-top: 6rem;
+    scroll-margin-top: 9rem;
+  }
+  .results > header {
+    display: flex;
+    margin-bottom: 2.4rem;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .results h2 {
+    margin-top: 1.3rem;
+  }
+  .results > header button {
+    color: #1d54c7;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+  }
+  .result-card {
+    padding: clamp(2.5rem, 4vw, 4rem);
+    border: 1px solid #dce5f0;
+    border-radius: 2.2rem;
+    background: #fff;
+    box-shadow: 0 1.2rem 4rem #1f385812;
+  }
+  .level {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .badge {
+    padding: 0.7rem 1.1rem;
+    border-radius: 2rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .non-urgent {
+    color: #146c43;
+    background: #dff6e9;
+  }
+  .urgent {
+    color: #8a4b00;
+    background: #fff0cd;
+  }
+  .emergency,
+  .mental-health-emergency {
+    color: #a21b15;
+    background: #fee3e1;
+  }
+  .mental-health {
+    color: #6842a6;
+    background: #eee7fb;
+  }
+  .description {
+    margin: 2.2rem 0;
+    color: #28364a;
+    font-size: 1.7rem;
+    line-height: 1.7;
+  }
+  .advice {
+    display: flex;
+    padding: 1.8rem;
+    gap: 1.3rem;
+    border-radius: 1.4rem;
+    background: #edf7f2;
+  }
+  .advice > b {
+    color: #178455;
+  }
+  .advice p {
+    margin-top: 0.5rem;
+    color: #426659;
+    font-size: 1.4rem;
+  }
+  .matched {
+    margin-top: 2.3rem;
+    color: #263349;
+  }
+  .matched > div {
+    display: flex;
+    margin-top: 1rem;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .matched span {
+    padding: 0.6rem 1rem;
+    border-radius: 1.5rem;
+    background: #f0f3f7;
+    font-size: 1.2rem;
+  }
+  .provider-title {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .provider-title > b {
+    color: #fff;
+    background: #1d54c7;
+  }
+  .provider-title small {
+    text-transform: uppercase;
+  }
+  .provider-title h3 {
+    margin-top: 0.3rem;
+    font-size: 2rem;
+  }
+  .instruction {
+    margin: 2rem 0;
+    padding: 1.3rem 1.5rem;
+    color: #173d84;
+    border-left: 0.4rem solid #1d54c7;
+    background: #edf3ff;
+    font-weight: 800;
+  }
+  dl > div {
+    display: grid;
+    padding: 1.1rem 0;
+    grid-template-columns: 9rem 1fr;
+    border-bottom: 1px solid #edf0f4;
+  }
+  dt {
+    color: #7a8798;
+    font-size: 1.3rem;
+  }
+  dd {
+    color: #263349;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .actions {
+    display: flex;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .actions a {
+    display: flex;
+    min-height: 4.7rem;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    color: #1d54c7;
+    border: 1px solid #b9cae6;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .actions a:first-child {
+    color: #fff;
+    background: #1d54c7;
+  }
+  .notes {
+    margin-top: 1.6rem;
+    color: #748094;
+    font-size: 1.2rem;
+  }
+  .disclaimer {
+    max-width: 90rem;
+    margin: 2rem auto 0;
+    color: #7a8493;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  @media (max-width: 900px) {
+    .finder-hero .container {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .notice {
+      max-width: none;
+    }
+    .finder-card,
+    .result-grid {
+      grid-template-columns: 1fr;
+    }
+    .how-panel {
+      order: -1;
+    }
+  }
+  @media (max-width: 600px) {
+    .finder-hero {
+      padding-top: 4.5rem;
+    }
+    .finder-hero h1 {
+      font-size: 4rem;
+    }
+    .trust,
+    .results > header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-panel,
+    .how-panel {
+      padding: 2.5rem 2rem;
+    }
+    .actions {
+      flex-direction: column;
+    }
+    dl > div {
+      grid-template-columns: 7.5rem 1fr;
+    }
+  }
+</style>
