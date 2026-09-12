@@ -1,0 +1,117 @@
+---
+export interface Props {
+	href?: string;
+	class?: string;
+	color?: "primary" | "secondary" | "tertiary" | "white";
+	variant?: "solid" | "outline";
+	type?: "button" | "submit" | "reset";
+}
+
+const {
+	class: className,
+	href,
+	variant = "solid",
+	color = "primary",
+	...attrs
+} = Astro.props;
+
+const classes = ["btn", `btn--${color}`, `btn--${variant}`, className]
+	.filter(Boolean)
+	.join(" ");
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag href={href} class={classes} {...attrs}>
+	<slot />
+</Tag>
+
+<style>
+	.btn {
+		display: inline-flex;
+		height: 4.8rem;
+		padding: 1.6rem 4rem;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		border-radius: 3.2rem;
+		text-decoration: none;
+		text-align: center;
+		transition: all 0.25s ease;
+		box-shadow: none;
+
+		&:active {
+			box-shadow: inset 0px 0px 2px 2px var(--button-shadow);
+		}
+
+		&.btn--solid {
+			&.btn--primary {
+				color: var(--color-white);
+				background-color: var(--color-primary);
+
+				&:hover {
+					background-color: var(--color-primary-dark);
+				}
+			}
+
+			&.btn--secondary {
+				color: var(--color-white);
+				background-color: var(--color-secondary);
+
+				&:hover {
+					background-color: var(--color-secondary-dark);
+				}
+			}
+
+			&.btn--tertiary {
+				color: var(--color-white);
+				background-color: var(--color-tertiary);
+
+				&:hover {
+					background-color: var(--color-tertiary-dark);
+				}
+			}
+
+			&.btn--white {
+				color: var(--color-primary);
+				background-color: var(--color-white);
+			}
+		}
+
+		&.btn--outline {
+			background-color: transparent;
+
+			&.btn--primary {
+				color: var(--color-primary);
+				border: 0.2rem solid var(--color-primary);
+
+				&:hover {
+					color: var(--color-primary-dark);
+					border-color: var(--color-primary-dark);
+				}
+			}
+
+			&.btn--secondary {
+				color: var(--color-secondary);
+				border: 0.2rem solid var(--color-secondary);
+
+				&:hover {
+					color: var(--color-secondary-dark);
+					border-color: var(--color-secondary-dark);
+				}
+			}
+
+			&.btn--white {
+				color: var(--color-white);
+				border: 0.2rem solid var(--color-white);
+			}
+		}
+	}
+
+	.btn[aria-disabled="true"],
+	.btn:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+</style>

@@ -1,0 +1,41 @@
+---
+import "../../styles/global.css";
+import Layout from "@layouts/Layout.astro";
+import HeroSection from "@/components/blocks/HeroSection.astro";
+import ServicesSection from "@/components/blocks/ServicesSection.astro";
+import TestimonialsSection from "@/components/blocks/TestimonialsSection.astro";
+import CtaSection from "@/components/blocks/CtaSection.astro";
+import TechologySection from "@/components/blocks/TechologySection.astro";
+
+export function getStaticPaths() {
+	const modules = import.meta.glob("../../content/services/*.json", {
+		eager: true,
+		import: "default",
+	});
+
+	return Object.values(modules).map((service: any) => ({
+		params: {
+			slug: service.slug,
+		},
+		props: {
+			service,
+		},
+	}));
+}
+
+const { service } = Astro.props;
+---
+
+<Layout
+	title={service.pageTitle}
+	description={`${service.pageTitle} description place here`}
+>
+	{service.sections.hero && <HeroSection data={service.sections.hero} />}
+	{service.sections.areas && <ServicesSection data={service.sections.areas} />}
+	{
+		service.sections.testimonials && (
+			<TestimonialsSection data={service.sections.testimonials} />
+		)
+	}
+	{service.sections.cta && <CtaSection data={service.sections.cta} />}
+</Layout>

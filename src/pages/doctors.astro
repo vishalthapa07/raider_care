@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+import Layout from "@layouts/Layout.astro";
+import HeroSection from "@/components/blocks/HeroSection.astro";
+import DoctorsGrid from "@components/blocks/doctors/DoctorsGrid.astro";
+import CtaSection from "@/components/blocks/CtaSection.astro";
+
+import data from "../content/DoctorsPage.json";
+---
+
+<Layout
+	title={data.pageTitle}
+	description=`${data.pageTitle} description place here`
+>
+	{data.sections.hero && <HeroSection data={data.sections.hero} />}
+	{data.sections.doctors && <DoctorsGrid data={data.sections.doctors} />}
+	{data.sections.cta && <CtaSection data={data.sections.cta} />}
+</Layout>

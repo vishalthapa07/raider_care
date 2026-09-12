@@ -1,0 +1,35 @@
+---
+interface Props {
+	rating: number;
+	reviews: number;
+}
+
+const { rating, reviews } = Astro.props;
+---
+
+<div class="doctor-reviews">
+	<h2 class="doctor-reviews__title">Patient Feedback</h2>
+	<p class="doctor-reviews__score">{rating.toFixed(1)} / 5</p>
+	<p class="doctor-reviews__count">Based on {reviews} verified reviews.</p>
+</div>
+
+<style>
+	.doctor-reviews {
+		padding: 2rem 0;
+	}
+
+	.doctor-reviews__title {
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.doctor-reviews__score {
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin: 0 0 0.25rem;
+	}
+
+	.doctor-reviews__count {
+		color: var(--color-muted);
+	}
+</style>

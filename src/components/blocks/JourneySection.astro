@@ -1,0 +1,168 @@
+---
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	{
+		props.items && (
+			<ul class="journey-list">
+				{props.items.map((item: any) => (
+					<li class="journey__item">
+						<div class="journey__item-content">
+							<span>{item.year}</span>
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</div>
+						<div class="journey__item-decor" />
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	.journey-list {
+		width: 100%;
+		max-width: 88rem;
+		margin: 6rem auto 0;
+	}
+
+	.journey__item {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		&:nth-child(even) {
+			flex-direction: row-reverse;
+
+			.journey__item-content {
+				margin-left: 7%;
+			}
+
+			.journey__item-decor {
+				&:before {
+					right: -0.5%;
+
+					@media screen and (max-width: 768px) {
+						left: -0.5%;
+						right: unset;
+					}
+				}
+
+				&:after {
+					top: calc(50% - 2rem);
+					right: -2rem;
+
+					@media screen and (max-width: 768px) {
+						left: -2rem;
+						right: unset;
+					}
+				}
+
+				@media screen and (max-width: 768px) {
+					margin-right: 0;
+					margin-left: 7%;
+				}
+			}
+		}
+
+		&:nth-child(odd) {
+			text-align: right;
+
+			@media screen and (max-width: 768px) {
+				text-align: left;
+				flex-direction: row-reverse;
+			}
+
+			.journey__item-content {
+				margin-right: 7%;
+
+				@media screen and (max-width: 768px) {
+					margin-right: 0;
+				}
+			}
+
+			.journey__item-decor {
+				&:before {
+					left: -0.5%;
+				}
+
+				&:after {
+					top: calc(50% - 2rem);
+					left: -2rem;
+				}
+
+				@media screen and (max-width: 768px) {
+					margin-right: 0;
+					margin-left: 7%;
+				}
+			}
+		}
+
+		span {
+			color: var(--color-primary);
+		}
+
+		p {
+			line-height: 1.75;
+		}
+	}
+
+	.journey__item-content {
+		display: flex;
+		padding: 6rem 0;
+		flex-direction: column;
+		flex: 0 0 43%;
+		gap: 1.6rem;
+
+		@media screen and (max-width: 768px) {
+			padding: 4rem 0;
+			flex: 1 0 80%;
+		}
+	}
+
+	.journey__item-decor {
+		position: relative;
+		flex: 1 1 57%;
+		align-self: stretch;
+
+		&:before,
+		&:after {
+			position: absolute;
+			display: block;
+			content: "";
+		}
+
+		&:before {
+			top: 0;
+			width: 1%;
+			height: 100%;
+			background-color: var(--color-primary-alpha);
+
+			@media screen and (max-width: 768px) {
+				width: 0.4rem;
+			}
+		}
+
+		&:after {
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+			background-color: var(--color-white);
+			border: 0.4rem solid var(--color-primary);
+		}
+	}
+</style>

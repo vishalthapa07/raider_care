@@ -1,0 +1,203 @@
+{
+	"pageTitle": "Home | RaiderCare",
+	"sections": {
+		"hero": {
+			"config": {
+				"class": "section--hero",
+				"background": "bg-1",
+				"container": "flex"
+			},
+			"title": "We care about your <strong>health</strong> with the highest professionalism",
+			"subtitle": "The most modern clinic in the heart of the city. We combine advanced medical experience with innovative equipment for your comfort.",
+			"image": "hero-image.webp",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "primary",
+					"url": "/appointment"
+				},
+				{
+					"text": "Our Services",
+					"variant": "outline",
+					"color": "primary",
+					"url": "/services"
+				}
+			]
+		},
+
+		"services": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"sectionHeader": {
+				"eyebrow": "Our services",
+				"title": "Comprehensive Medical Care"
+			},
+			"items": [
+				{
+					"title": "Crardiology",
+					"text": "Complete diagnostics of the cardiovascular system and individual treatment plans.",
+					"icon": "cardio",
+					"link": {
+						"url": "/services/cardiology",
+						"text": "Learn more",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Neurology",
+					"text": "Expert treatment of nervous system diseases using modern medical techniques.",
+					"icon": "brain",
+					"link": {
+						"url": "/services/neurology",
+						"text": "Learn more",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Laboratory",
+					"text": "Fast and accurate laboratory tests based on our own modern diagnostic center.",
+					"icon": "farma",
+					"link": {
+						"url": "/services/laboratory",
+						"text": "Learn more",
+						"icon": "arrow-right"
+					}
+				}
+			]
+		},
+
+		"why": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "Why patients choose Medicsare Clinic",
+				"subtitle": "We combine decades of medical expertise with the latest technological advancements to provide world-class healthcare."
+			},
+			"reasons": [
+				{
+					"icon": "case",
+					"title": "Experienced Doctors",
+					"text": "Our team consists of high-category physicians and candidates of medical sciences who regularly undergo internships in leading clinics in Europe and the USA. We guarantee a professional approach to every patient."
+				},
+				{
+					"icon": "microscope",
+					"title": "Modern Equipment",
+					"text": "We utilize the latest generation of diagnostic and surgical equipment from world leaders: Siemens, GE Healthcare, and Philips.",
+					"image": "equipment.webp"
+				},
+				{
+					"icon": "calendar",
+					"title": "24/7 Online Booking",
+					"text": "Schedule your visit anytime through our convenient portal."
+				},
+				{
+					"icon": "care",
+					"title": "Personalized Care",
+					"text": "Individual treatment plans tailored to your unique health needs."
+				}
+			]
+		},
+
+		"statistics": {
+			"config": {
+				"class": "section--primary"
+			},
+			"data": [
+				{
+					"amount": "12+",
+					"caption": "Years of Experience"
+				},
+				{
+					"amount": "50k+",
+					"caption": "Happy Patients"
+				},
+				{
+					"amount": "85",
+					"caption": "Expert Doctors"
+				},
+				{
+					"amount": "24/7",
+					"caption": "Modern Facilities"
+				}
+			]
+		},
+
+		"testimonials": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"sectionHeader": {
+				"eyebrow": "Patient Testimonials",
+				"title": "What our patients say",
+				"subtitle": "Real stories from our patients who chose Medicsare Clinic for their care and trust our expertise."
+			},
+			"items": [
+				{
+					"quote": "The doctors listened carefully, made me feel safe, and guided me through every step of treatment.",
+					"name": "Kimberly Overbay",
+					"role": "Cardiology Patient",
+					"photo": "/images/testimonials/patient-1.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "Thanks to the team, I received fast and compassionate care that made a real difference.",
+					"name": "Joseph Murphy",
+					"role": "Neurology Patient",
+					"photo": "/images/testimonials/patient-2.jpg",
+					"rating": 4
+				},
+				{
+					"quote": "The clinic was modern, the staff were professional, and they took the time to explain everything clearly.",
+					"name": "Gloria McNeill",
+					"role": "Patient",
+					"photo": "/images/testimonials/patient-3.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "The follow-up communication was excellent, and the team made every visit comfortable.",
+					"name": "Ruth Andrews",
+					"role": "General Care Patient",
+					"photo": "/images/testimonials/patient-1.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "Professional, kind, and efficient service with a personalized treatment plan.",
+					"name": "Charles Rowden",
+					"role": "Surgery Patient",
+					"photo": "/images/testimonials/patient-2.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "I felt supported from first appointment to recovery thanks to their compassionate team.",
+					"name": "Melissa Corrigan",
+					"role": "Recovery Patient",
+					"photo": "/images/testimonials/patient-3.jpg",
+					"rating": 5
+				}
+			]
+		},
+
+		"cta": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"title": "Ready To Get Professional Help?",
+			"text": "Sign up for a consultation today and start your path to a healthy life with Medicsare experts.",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "white",
+					"url": "/appointment"
+				}
+			]
+		}
+	}
+}

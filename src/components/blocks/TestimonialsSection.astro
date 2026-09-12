@@ -1,0 +1,195 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+import "@splidejs/splide/dist/css/splide.min.css";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+
+const items = props.items ?? [];
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	{
+		items.length > 0 && (
+			<div class="testimonials-slider splide" aria-label="Patient testimonials">
+				<div class="splide__track">
+					<ul class="splide__list">
+						{items.map((item: any, index: number) => (
+							<li class="splide__slide testimonial-card">
+								<div class="rating" aria-hidden="true">
+									{Array.from({ length: item.rating ?? 5 }).map((_, index) => (
+										<Icon name="star" />
+									))}
+								</div>
+								<span class="sr-only">
+									Rated {item.rating ?? 5} out of 5 stars.
+								</span>
+								<p class="quote">“{item.quote}”</p>
+								<div class="testimonial-author">
+									{item.photo && (
+										<div class="author-image">
+											<img src={item.photo} alt={item.name} />
+										</div>
+									)}
+									<div class="author-text">
+										<strong>{item.name}</strong>
+										{item.role && <span>{item.role}</span>}
+									</div>
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		)
+	}
+</Section>
+
+<script type="module">
+	import Splide from "@splidejs/splide";
+
+	window.addEventListener("load", () => {
+		const slider = document.querySelector(".testimonials-slider");
+
+		if (slider) {
+			new Splide(slider, {
+				type: "loop",
+				perPage: 3,
+				gap: "1.6rem",
+				pagination: true,
+				arrows: false,
+				drag: true,
+				keyboard: "focused",
+				slideFocus: true,
+				focus: "center",
+				autoplay: false,
+				breakpoints: {
+					1024: {
+						perPage: 1,
+					},
+				},
+			}).mount();
+		}
+	});
+</script>
+
+<style is:global>
+	.testimonials-slider {
+		margin-top: 6.4rem;
+	}
+
+	.testimonial-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: var(--global-gap);
+		background-color: var(--color-white);
+		border-radius: 1.6rem;
+		min-height: 22rem;
+	}
+
+	.quote {
+		margin: 0;
+		font-size: clamp(1.8rem, calc(1.67rem + 0.18vw), 2rem);
+		line-height: 1.75;
+		color: var(--color-grey-900);
+	}
+
+	.rating {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.4rem;
+		margin-bottom: 1.6rem;
+		color: #9e7f0b;
+	}
+
+	.rating svg {
+		width: 3.2rem;
+		height: 3.2rem;
+		color: #9e7f0b;
+	}
+
+	.testimonial-author {
+		display: flex;
+		align-items: center;
+		gap: 1.2rem;
+		margin-top: 2rem;
+		color: var(--color-grey-700);
+	}
+
+	.author-image {
+		flex-shrink: 0;
+		width: 5rem;
+		height: 5rem;
+		border-radius: 50%;
+		overflow: hidden;
+		background-color: #f4f5f7;
+	}
+
+	.author-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.author-text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.4rem;
+	}
+
+	.testimonial-author strong {
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
+
+	.testimonial-author span {
+		font-size: 1.4rem;
+	}
+
+	.testimonials-slider .splide__pagination {
+		position: relative;
+		margin-top: 4rem;
+		display: flex;
+		justify-content: center;
+		gap: 0.8rem;
+	}
+
+	.testimonials-slider .splide__pagination__page {
+		width: 1.2rem;
+		height: 1.2rem;
+		border-radius: 50%;
+		background-color: rgba(34, 60, 80, 0.15);
+		transition:
+			background-color 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.testimonials-slider .splide__pagination__page.is-active {
+		background-color: var(--color-primary) !important;
+		transform: scale(1.1);
+	}
+
+	@media screen and (max-width: 1023px) {
+		.testimonials-slider {
+			margin-top: 3.2rem;
+		}
+
+		.testimonial-card {
+			min-height: auto;
+			padding: 2rem;
+		}
+	}
+</style>

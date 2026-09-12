@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+
+import Layout from "@/layouts/Layout.astro";
+import PricingSection from "@/components/blocks/PricingSection.astro";
+import PaymentMethodsSection from "@/components/blocks/PaymentMethodsSection.astro";
+import ProvidersSection from "@/components/blocks/ProvidersSection.astro";
+import FAQSection from "@/components/blocks/FAQSection.astro";
+import CtaSection from "@/components/blocks/CtaSection.astro";
+
+import data from "../content/PricingPage.json";
+---
+
+<Layout
+	title={data.pageTitle}
+	description=`${data.pageTitle} description place here`
+>
+	{data.sections.pricing && <PricingSection data={data.sections.pricing} />}
+	{
+		data.sections.paymentMethods && (
+			<PaymentMethodsSection data={data.sections.paymentMethods} />
+		)
+	}
+	{
+		data.sections.providers && (
+			<ProvidersSection data={data.sections.providers} />
+		)
+	}
+	{data.sections.faq && <FAQSection data={data.sections.faq} />}
+	{data.sections.cta && <CtaSection data={data.sections.cta} />}
+</Layout>

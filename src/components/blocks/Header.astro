@@ -1,0 +1,131 @@
+---
+import { withBase } from "@lib/urls";
+import siteConfig from "../../siteConfig";
+import Container from "@ui/Container.astro";
+import Button from "@ui/Button.astro";
+import Logo from "@ui/Logo.astro";
+import Burger from "@ui/Burger.astro";
+---
+
+<header class="header" id="header">
+	<Container>
+		<Logo />
+		<nav class="header-nav" id="header-nav">
+			<ul class="main-menu">
+				{
+					siteConfig.nav.main.map((item) => (
+						<li class="main-menu__item">
+							<a href={withBase(item.url)} class="main-menu__link">
+								{item.text}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+
+			<Button href={withBase("/appointment")} color="primary" variant="solid"
+				>Book Appointment</Button
+			>
+		</nav>
+		<Burger />
+	</Container>
+</header>
+
+<script>
+	const body = document.body;
+	const header = document.getElementById("header");
+
+	if (header) {
+		const onScroll = () => {
+			header.classList.toggle("header--scrolled", body.scrollTop > 0);
+		};
+
+		onScroll();
+		body.addEventListener("scroll", onScroll, { passive: true });
+	}
+</script>
+
+<style>
+	.header {
+		z-index: 2000;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 0 2rem;
+		height: var(--header-height);
+		background: var(--color-white);
+		transition: all 0.3s ease;
+
+		&.header--scrolled {
+			--header-height: 6rem;
+
+			position: fixed;
+			box-shadow: 0 0 0.5rem 0.2rem var(--color-shadow);
+		}
+
+		.container {
+			display: flex;
+			height: 100%;
+			flex: 1 0 100%;
+			align-items: center;
+		}
+	}
+
+	.header-nav {
+		display: flex;
+		flex-grow: 1;
+		justify-content: flex-end;
+
+		@media screen and (max-width: 1024px) {
+			z-index: 1000;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100vw;
+			height: 100dvh;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: #faf8ff;
+			transform: translateX(100%);
+			visibility: hidden;
+			transition: all 0.5s ease-in-out;
+
+			body.menu-open & {
+				transform: translateX(0);
+				visibility: visible;
+			}
+
+			.main-menu__link {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.main-menu {
+		display: flex;
+		margin-inline: auto;
+		gap: 3.2rem;
+		align-items: center;
+
+		@media screen and (max-width: 1024px) {
+			margin-bottom: 10vh;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	.main-menu__link {
+		color: var(--color-text);
+		font-weight: 500;
+		text-decoration: none;
+		trnasition: all 0.2s ease;
+
+		&:hover {
+			color: var(--color-primary);
+			text-decoration: underline;
+		}
+	}
+</style>

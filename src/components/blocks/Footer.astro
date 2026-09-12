@@ -1,0 +1,146 @@
+---
+import { withBase } from "@lib/urls";
+import siteConfig from "../../siteConfig";
+import Container from "@ui/Container.astro";
+import Logo from "@ui/Logo.astro";
+---
+
+<footer class="footer">
+	<Container class="container--footer">
+		<div class="footer-col footer-col--logo">
+			<Logo />
+			<p class="footer__text">
+				Providing world-class healthcare with a personal touch. Your health is
+				our core priority.
+			</p>
+		</div>
+
+		{
+			siteConfig.nav.info && (
+				<div class="footer-col">
+					<div class="footer-title">Information</div>
+					<ul class="footer-list">
+						{siteConfig.nav.info.map((item) => (
+							<li class="footer-list__item">
+								<a href={withBase(item.url)} class="footer-list__link">
+									{item.text}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+
+		{
+			siteConfig.nav.support && (
+				<div class="footer-col">
+					<div class="footer-title">Support</div>
+					<ul class="footer-list">
+						{siteConfig.nav.support.map((item) => (
+							<li class="footer-list__item">
+								<a href={withBase(item.url)} class="footer-list__link">
+									{item.text}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+
+		{
+			siteConfig.nav.legal && (
+				<div class="footer-col">
+					<div class="footer-title">Legal</div>
+					<ul class="footer-list">
+						{siteConfig.nav.legal.map((item) => (
+							<li class="footer-list__item">
+								<a href={withBase(item.url)} class="footer-list__link">
+									{item.text}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+
+		{
+			siteConfig.copyright && (
+				<div class="footer-bottom">
+					<p>{siteConfig.copyright}</p>
+				</div>
+			)
+		}
+	</Container>
+</footer>
+
+<style>
+	.footer {
+		padding: 10rem var(--section-padding-inline) 2.4rem;
+		background-color: #e8eef8;
+
+		@media screen and (max-width: 1024px) {
+			padding-block: 4rem;
+		}
+
+		.logo {
+			z-index: 0;
+		}
+	}
+
+	.footer-title {
+		color: var(--color-title);
+		font-size: 1.8rem;
+		font-weight: 600;
+	}
+
+	.footer__text {
+		line-height: 1.66;
+	}
+
+	.footer-col {
+		--gap: 2.4rem;
+		display: flex;
+		flex: 0 1 calc(22% - var(--gap));
+		flex-direction: column;
+		gap: var(--gap);
+
+		@media screen and (max-width: 1024px) {
+			flex-basis: calc(33.33% - var(--gap));
+		}
+
+		&.footer-col--logo {
+			padding: 0 4rem 0 0;
+			flex: 0 1 calc(33.33% - var(--gap));
+
+			@media screen and (max-width: 1024px) {
+				padding: 0;
+				flex-basis: 100%;
+			}
+		}
+	}
+
+	.footer-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.6rem;
+	}
+
+	.footer-list__link {
+		color: var(--color-text);
+		font-weight: 600;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.footer-bottom {
+		width: 100%;
+		padding-top: 2.4rem;
+		border-top: 1px solid #afafaf;
+	}
+</style>

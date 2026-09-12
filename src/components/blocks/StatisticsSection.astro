@@ -1,0 +1,58 @@
+---
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section class="section--primary" background={props.config.background}>
+	<div class="statistics">
+		{
+			props.data.map((item: any) => (
+				<div class="stat-item">
+					<span class="stat-amount">{item.amount}</span>
+					<span class="stat-caption">{item.caption}</span>
+				</div>
+			))
+		}
+	</div>
+</Section>
+
+<style>
+	.statistics {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 3.2rem;
+		color: var(--color-white);
+
+		@media screen and (max-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.stat-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.8rem;
+		padding: 0;
+		text-align: center;
+	}
+
+	.stat-amount {
+		font-size: clamp(3.2rem, calc(2.636rem + 2.818vw), 5.6rem);
+		font-weight: 700;
+		line-height: 1.1;
+		color: var(--color-white);
+	}
+
+	.stat-caption {
+		font-size: clamp(1.4rem, calc(1.318rem + 0.409vw), 1.8rem);
+		color: var(--color-white);
+	}
+</style>

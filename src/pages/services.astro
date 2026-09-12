@@ -1,0 +1,18 @@
+---
+import "../styles/global.css";
+import Layout from "@layouts/Layout.astro";
+import HeroSection from "@components/blocks/HeroSection.astro";
+import ServicesSection from "@/components/blocks/ServicesSection.astro";
+import CtaSection from "@components/blocks/CtaSection.astro";
+
+import data from "../content/ServicesPage.json";
+---
+
+<Layout
+	title={data.pageTitle}
+	description=`${data.pageTitle} description place here`
+>
+	{data.sections.hero && <HeroSection data={data.sections.hero} />}
+	{data.sections.services && <ServicesSection data={data.sections.services} />}
+	{data.sections.cta && <CtaSection data={data.sections.cta} />}
+</Layout>

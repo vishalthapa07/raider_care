@@ -1,0 +1,162 @@
+{
+	"pageTitle": "Pricing & Insurance | Medicsare Clinic",
+	"sections": {
+		"pricing": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "Pricing & Insurance",
+				"subtitle": "We believe in healthcare without surprises. Our commitment to transparent billing and extensive insurance partnerships ensures you can focus on what matters most: your health."
+			},
+			"prices": {
+				"title": "Common Service Pricing",
+				"subtitle": "Starting rates for our most frequent consultations and tests.",
+				"rem": "*Prices may vary based on specific medical needs",
+				"list": [
+					{
+						"icon": "stetoscope",
+						"title": "General Visit",
+						"text": "Standard primary care and initial assessment.",
+						"price": "$85"
+					},
+					{
+						"icon": "head",
+						"title": "Specialist Visit",
+						"text": "Consultation with cardiology, derm, or neurology.",
+						"price": "$150"
+					},
+					{
+						"icon": "microscope",
+						"title": "Diagnostic Tests",
+						"text": "Standard blood work and basic imaging tests.",
+						"price": "$45"
+					},
+					{
+						"icon": "heart",
+						"title": "Wellness Plan",
+						"text": "Comprehensive annual physical and screenings.",
+						"price": "$195"
+					}
+				]
+			}
+		},
+
+		"paymentMethods": {
+			"config": {
+				"class": "section--info section--primary"
+			},
+			"sectionHeader": {
+				"title": "Secure payment methods"
+			},
+			"items": [
+				{
+					"icon": "credit-card",
+					"text": "Visa / Master"
+				},
+				{
+					"icon": "bank",
+					"text": "Bank Transfer"
+				},
+				{
+					"icon": "wallet",
+					"text": "Apple Pay / Google Pay"
+				},
+				{
+					"icon": "flex-plan",
+					"text": "Flexible Plans"
+				}
+			]
+		},
+
+		"providers": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "Accepted Insurance Providers",
+				"subtitle": "We partner with major local and international providers to offer seamless direct billing experiences."
+			},
+			"items": [
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				},
+				{
+					"image": "/images/logos/company-logo.svg",
+					"name": "Company name"
+				}
+			]
+		},
+
+		"faq": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "FAQ",
+				"subtitle": "Find answers to common questions about financial matters at Medicsare."
+			},
+			"items": [
+				{
+					"question": "Do you offer payment plans for major surgeries?",
+					"answer": "Yes, we offer flexible interest-free payment plans for treatments exceeding $2,000. Our financial counselors can help you spread the cost over 6, 12, or 24 months through our banking partners."
+				},
+				{
+					"question": "What if my insurance provider is not listed?",
+					"answer": "Yes, we offer flexible interest-free payment plans for treatments exceeding $2,000. Our financial counselors can help you spread the cost over 6, 12, or 24 months through our banking partners."
+				},
+				{
+					"question": "Are laboratory tests included in the consultation price?",
+					"answer": "Yes, we offer flexible interest-free payment plans for treatments exceeding $2,000. Our financial counselors can help you spread the cost over 6, 12, or 24 months through our banking partners."
+				}
+			]
+		},
+
+		"cta": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"title": "Have more questions about billing?",
+			"text": "Our financial counseling team is available Monday through Friday to discuss your specific needs and coverage options.",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "white",
+					"url": "/appointment"
+				},
+				{
+					"text": "Contact Billing",
+					"variant": "outline",
+					"color": "white",
+					"url": "/contact"
+				}
+			]
+		}
+	}
+}

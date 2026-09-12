@@ -1,0 +1,43 @@
+:root {
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	--color-primary: #1d54c7;
+	--color-primary-alpha: #e7eefb;
+	--color-primary-light: #3467ce;
+	--color-primary-dark: #0F3483;
+
+	--color-secondary: #406bdd;
+	--color-secondary-light: #517be2;
+	--color-secondary-dark: #0C2972;
+
+	--color-tertiary: #b25800;
+	--color-tertiary-light: #bb6a1f;
+	--color-tertiary-dark: #7B480E;
+
+	--color-title: #191b22;
+	--color-text: #5f6b7a;
+	--color-muted: #667280;
+	--color-border: #ccd0d5;
+	--color-grey-900: #14161d;
+	--color-grey-700: #3d404a;
+
+	--color-shadow: rgba(0, 0, 0, 0.2);
+	--button-shadow: rgba(0, 0, 0, 0.12);
+	--color-card-border: #dce8f8;
+
+	--section-padding-block: clamp(6rem, calc(1.859rem + 8.451vw), 12rem);
+	--section-padding-inline: clamp(1.6rem, calc(0.496rem + 2.254vw), 3.2rem);
+	--content-gap: 2.4rem;
+	--global-gap: 3.2rem;
+
+	--header-height: 8.8rem;
+
+	@media screen and (max-width: 1024px) {
+		--global-gap: 2.6rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		--global-gap: 2rem;
+	}
+}

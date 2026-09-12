@@ -1,0 +1,92 @@
+---
+import { withBase } from "@/lib/urls";
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	{
+		props.items && (
+			<ul class="services-list">
+				{props.items.map((item: any) => (
+					<li class="service-card">
+						<span class="card-icon">
+							<Icon name={item.icon} />
+						</span>
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+						{item.link && (
+							<a href={withBase(item.link.url)}>
+								{item.link.text}
+								<Icon name={item.link.icon} />
+							</a>
+						)}
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	.services-list {
+		display: grid;
+		margin-top: 6.4rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--global-gap);
+
+		@media screen and (max-width: 1023px) {
+			grid-template-columns: 1fr;
+		}
+
+		.service-card {
+			grid-column: span 1;
+		}
+	}
+
+	.service-card {
+		display: flex;
+		padding: var(--global-gap);
+		flex-flow: column;
+		gap: 1.6rem;
+		text-align: left;
+		border-radius: 1.6rem;
+		background-color: var(--color-white);
+		overflow: hidden;
+
+		p {
+			margin-bottom: auto;
+			line-height: 1.67;
+		}
+
+		a {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.8rem;
+			color: var(--color-primary);
+			font-weight: 600;
+			text-decoration: none;
+			transition: all 0.3s ease;
+
+			&:hover {
+				gap: 1.6rem;
+			}
+
+			svg {
+				font-size: 1rem;
+			}
+		}
+	}
+</style>

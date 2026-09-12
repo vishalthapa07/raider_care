@@ -1,0 +1,290 @@
+---
+import siteConfig from "@/siteConfig";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+import Button from "@ui/Button.astro";
+
+import { images } from "@lib/images";
+const mapImage = images[`../assets/map.webp`];
+---
+
+<Section
+	class=""
+	background="bg-2"
+	headingLevel={1}
+	sectionHeader={{
+		title: "Send Us A Message",
+		subtitle:
+			"Whether you have a question about our services, insurance, or simply want to learn more about our patient care, we are here to help. <br>Our team typically responds within 24 business hours.",
+	}}
+>
+	<div class="contact-wrapper">
+		<form action="" class="card contact__form">
+			<label for="full-name" class="single">
+				<span>Full Name</span>
+				<input
+					type="text"
+					id="full-name"
+					name="full-name"
+					placeholder="John Doe"
+					autocomplete="name"
+					required
+				/>
+			</label>
+			<label for="email" class="single">
+				<span>Email Address</span>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					placeholder="john@example.com"
+					autocomplete="email"
+					required
+				/>
+			</label>
+			<label for="phone" class="single">
+				<span>Phone Number</span>
+				<input
+					type="tel"
+					id="phone"
+					name="phone"
+					placeholder="(555) 000-0000"
+					autocomplete="tel"
+					inputmode="tel"
+					pattern="[0-9+()\-\s.]{7,20}"
+					required
+				/>
+			</label>
+			<label for="subject" class="single">
+				<span>Subject</span>
+				<select id="subject" name="subject">
+					<option value="general-inquiry">General Inquiry</option>
+					<option value="appointment-help">Appointment Help</option>
+					<option value="billing-question">Billing Question</option>
+					<option value="insurance-inquiry">Insurance Inquiry</option>
+					<option value="feedback">Feedback</option>
+				</select>
+			</label>
+			<label for="message" class="double">
+				<span>Message</span>
+				<textarea
+					name="message"
+					id="message"
+					placeholder="How can we help you today?"
+					rows="10"
+					required></textarea>
+			</label>
+			<Button type="submit" variant="solid" color="primary" class="double"
+				>Send Message</Button
+			>
+			<p id="form-status" class="form-status double" aria-live="polite"></p>
+		</form>
+
+		<div class="card contact__info">
+			<h2>Contact Information</h2>
+			<ul class="contact__list">
+				{
+					siteConfig.phone &&
+					<li class="contact__item">
+						<span class="contact__icon"><Icon name="phone" /></span>
+						<div class="contact__details">
+							<span>Phone Number</span>
+							<a href=`tel:${siteConfig.phone}`>{siteConfig.phone}</a>
+						</div>
+					</li>
+				}
+				{
+					siteConfig.email &&
+					<li class="contact__item">
+						<span class="contact__icon"><Icon name="email" /></span>
+						<div class="contact__details">
+							<span>Email Address</span>
+							<a href=`mailto:${siteConfig.email}`>{siteConfig.email}</a>
+						</div>
+					</li>
+				}
+				{
+					siteConfig.address &&
+					<li class="contact__item">
+						<span class="contact__icon"><Icon name="marker" /></span>
+						<div class="contact__details">
+							<span>Our Location</span>
+							{siteConfig.address}
+						</div>
+					</li>
+				}
+			</ul>
+		</div>
+
+		<div class="card contact__map">
+			<div class="map-holder">
+				<Image src={mapImage} width={1000} height={400} alt="" />
+			</div>
+		</div>
+	</div>
+</Section>
+
+<style>
+	.contact-wrapper {
+		display: grid;
+		margin-top: calc(var(--global-gap) * 2);
+		grid-template-columns: repeat(12, 1fr);
+		gap: var(--global-gap);
+	}
+
+	.contact__form {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-column: span 7;
+		gap: var(--global-gap);
+
+		@media screen and (max-width: 1024px) {
+			grid-column: span 12;
+		}
+
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+			color: var(--color-title);
+
+			span {
+				font-size: 1.4rem;
+				font-weight: 600;
+			}
+		}
+
+		input,
+		select,
+		textarea {
+			padding: 1.4rem 1.6rem;
+			color: var(--color-title);
+			border: 1px solid #e8eef8;
+			background-color: var(--color-white);
+			border-radius: 1.2rem;
+			transition: all 0.2s ease;
+
+			&:focus,
+			&:active {
+				border-color: #dae2ff;
+			}
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		.single {
+			grid-column: span 1;
+
+			@media screen and (max-width: 768px) {
+				grid-column: span 2;
+			}
+		}
+
+		.double {
+			grid-column: span 2;
+		}
+
+		.form-status {
+			grid-column: span 2;
+			margin: 0;
+			font-size: 1.4rem;
+			font-weight: 600;
+			color: var(--color-primary);
+		}
+	}
+
+	.contact__info {
+		grid-column: span 5;
+
+		@media screen and (max-width: 1024px) {
+			grid-column: span 12;
+		}
+	}
+
+	.contact__map {
+		grid-column: span 12;
+	}
+
+	.map-holder {
+		border-radius: 1.2rem;
+		height: 40rem;
+		overflow: hidden;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.contact__list {
+		margin-top: var(--global-gap);
+	}
+
+	.contact__item {
+		display: flex;
+		gap: var(--global-gap);
+
+		& + & {
+			margin-top: 4rem;
+		}
+	}
+
+	.contact__icon {
+		display: inline-flex;
+		width: 4.8rem;
+		height: 4.8rem;
+		flex: 0 0 auto;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-primary);
+		font-size: 2rem;
+		background-color: #dae2ff;
+		border-radius: 50%;
+	}
+
+	.contact__details {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		font-weight: 600;
+
+		a {
+			color: var(--color-primary);
+			text-decoration: none;
+
+			&:hover, &:active {
+				text-decoration: underline;
+			}
+		}
+
+		span {
+			color: var(--color-title);
+			font-size: 1.4rem;
+			font-weight: 600;
+		}
+	}
+</style>
+
+<script>
+	const form = document.querySelector(".contact__form");
+
+	if (form) {
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+			const status = document.getElementById("form-status");
+
+			if (form.checkValidity()) {
+				status.textContent =
+					"Your message has been submitted. We typically respond within 24 business hours.";
+				form.reset();
+			} else {
+				form.reportValidity();
+			}
+		});
+	}
+</script>

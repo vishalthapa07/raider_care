@@ -1,0 +1,70 @@
+---
+import { Picture } from "astro:assets";
+import { withBase } from "@lib/urls";
+import { images } from "@lib/images";
+
+import Section from "@ui/Section.astro";
+import Column from "@ui/Column.astro";
+import Button from "@ui/Button.astro";
+import ImageHolder from "@ui/ImageHolder.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+
+const heroImage = images[`../assets/${props.image}`];
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	container={props.config.container}
+>
+	<Column class="content">
+		{props.title && <h1 class="hero-title" set:html={props.title} />}
+		{props.subtitle && <p class="subtitle" set:html={props.subtitle} />}
+
+		{
+			props.buttons && (
+				<div class="actions">
+					{props.buttons.map((btn: any) => (
+						<Button
+							variant={btn.variant}
+							color={btn.color}
+							href={withBase(btn.url)}
+						>
+							{btn.text}
+						</Button>
+					))}
+				</div>
+			)
+		}
+	</Column>
+
+	<Column>
+		<ImageHolder>
+			<Picture
+				src={heroImage}
+				alt=""
+				formats={["avif", "webp"]}
+				width={552}
+				height={480}
+				sizes={"(min-width: 1024px) 60vw, 100vw"}
+			/>
+		</ImageHolder>
+	</Column>
+</Section>
+
+<style>
+	.hero-title {
+		color: var(--color-text);
+
+		strong {
+			color: var(--color-primary);
+		}
+	}
+</style>

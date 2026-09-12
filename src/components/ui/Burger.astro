@@ -1,0 +1,122 @@
+---
+
+---
+
+<button
+	class="menu-burger"
+	type="button"
+	aria-label="Open navigation menu"
+	aria-expanded="false"
+	aria-controls="header-nav"
+	data-menu-toggle
+>
+	<span aria-hidden="true"></span>
+</button>
+
+<style is:global>
+	.menu-burger {
+		z-index: 2000;
+		position: relative;
+		margin: 0 0 0 auto;
+		display: none;
+		width: 3rem;
+		height: 3rem;
+		flex-flow: column;
+		justify-content: center;
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+
+		@media screen and (max-width: 1024px) {
+			display: flex;
+		}
+
+		span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 3rem;
+			height: 0.2rem;
+			border-radius: 1rem;
+			background-color: var(--color-primary);
+			transition: all 0.3s ease;
+			transform: translate(-50%, -50%);
+
+			&:before,
+			&:after {
+				position: absolute;
+				display: block;
+				width: 3rem;
+				height: 0.2rem;
+				content: "";
+				background-color: var(--color-primary);
+				transition: all 0.3s ease;
+			}
+
+			&:before {
+				top: -0.8rem;
+			}
+
+			&:after {
+				top: 0.8rem;
+			}
+		}
+
+		&.menu-burger--opened {
+			span {
+				background-color: transparent;
+
+				&:before {
+					top: 0;
+					transform: rotate(45deg);
+				}
+
+				&:after {
+					top: 0;
+					transform: rotate(-45deg);
+				}
+			}
+		}
+	}
+</style>
+
+<script>
+	const body: Element = document.body;
+	const openClass: string = "menu-burger--opened";
+	const burger: any = document.querySelector(".menu-burger");
+	const nav: any = document.getElementById("header-nav");
+
+	const closeMenu = () => {
+		body.classList.remove("menu-open");
+		burger.classList.remove(openClass);
+		burger.setAttribute("aria-expanded", "false");
+		burger.setAttribute("aria-label", "Open navigation menu");
+	};
+
+	const openMenu = () => {
+		body.classList.add("menu-open");
+		burger.classList.add(openClass);
+		burger.setAttribute("aria-expanded", "true");
+		burger.setAttribute("aria-label", "Close navigation menu");
+	};
+
+	if (burger && nav) {
+		burger.addEventListener("click", () => {
+			if (burger.classList.contains(openClass)) {
+				closeMenu();
+			} else {
+				openMenu();
+				const firstLink = nav.querySelector("a");
+				firstLink && firstLink.focus();
+			}
+		});
+
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && body.classList.contains("menu-open")) {
+				closeMenu();
+				burger.focus();
+			}
+		});
+	}
+</script>

@@ -1,0 +1,175 @@
+{
+	"pageTitle": "About us | Medicsare Clinic",
+	"sections": {
+		"hero": {
+			"config": {
+				"class": "section--hero",
+				"background": "bg-1",
+				"container": "flex"
+			},
+			"title": "Dedicated to Your <strong>Health</strong> and <strong>Wellbeing</strong>",
+			"subtitle": "Since our inception, Medicsare Clinic has been at the forefront of medical innovation. We combine world-class expertise with a deeply personal touch, ensuring every patient receives the specialized care they deserve.",
+			"image": "team.webp",
+			"buttons": [
+				{
+					"text": "Expolre services",
+					"variant": "solid",
+					"color": "primary",
+					"url": "/services"
+				},
+				{
+					"text": "View our team",
+					"variant": "outline",
+					"color": "primary",
+					"url": "/doctors"
+				}
+			]
+		},
+
+		"statistics": {
+			"config": {
+				"class": "section--primary"
+			},
+			"data": [
+				{
+					"amount": "12+",
+					"caption": "Years of Experience"
+				},
+				{
+					"amount": "50k+",
+					"caption": "Happy Patients"
+				},
+				{
+					"amount": "85",
+					"caption": "Expert Doctors"
+				},
+				{
+					"amount": "24/7",
+					"caption": "Modern Facilities"
+				}
+			]
+		},
+
+		"values": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "Our Core Values",
+				"subtitle": "Guided by a commitment to excellence and a passion for healing, we strive to set new benchmarks in modern healthcare."
+			},
+			"items": [
+				{
+					"icon": "care",
+					"title": "Our Mission",
+					"text": "To provide compassionate, patient-centered healthcare through a combination of cutting-edge technology and human-centric expertise. We treat the person, not just the symptom."
+				},
+				{
+					"icon": "eye",
+					"title": "Our Vision",
+					"text": "To lead the future of healthcare as a digital-first, globally recognized medical center that simplifies the patient journey through technology and preventive care."
+				},
+				{
+					"icon": "heart",
+					"title": "Our Compassion",
+					"text": "We put people first in everything we do. Every patient deserves empathy, respect, and personalized care delivered with kindness and understanding."
+				},
+				{
+					"icon": "bulb",
+					"title": "Our Innovation",
+					"text": "We embrace modern technology to improve healthcare outcomes and simplify every step of the patient experience. Innovation helps us provide faster, smarter, and more accessible care."
+				},
+				{
+					"icon": "handshake",
+					"title": "Our Collaboration",
+					"text": "Great healthcare is built on teamwork. Our specialists work together across disciplines to ensure every patient receives comprehensive and coordinated treatment."
+				},
+				{
+					"icon": "accessibility",
+					"title": "Our Accessibility",
+					"text": "Healthcare should be simple, convenient, and available when it's needed most. We strive to remove barriers through digital solutions, flexible scheduling, and patient-focused services."
+				}
+			]
+		},
+
+		"journey": {
+			"config": {
+				"class": "section--centered"
+			},
+			"sectionHeader": {
+				"title": "Our Journey",
+				"subtitle": "A legacy of trust and innovation built over two decades."
+			},
+			"items": [
+				{
+					"year": 2008,
+					"title": "Foundation",
+					"text": "Medicsare opens its doors as a specialized family practice in the heart of the city."
+				},
+				{
+					"year": 2015,
+					"title": "Surgical Wing Launch",
+					"text": "Opening of our state-of-the-art surgical suites featuring advanced robotic-assisted platforms."
+				},
+				{
+					"year": 2022,
+					"title": "Global Excellence Award",
+					"text": "Recognized as the leading private medical center for patient safety and clinical outcomes."
+				}
+			]
+		},
+
+		"technology": {
+			"config": {
+				"background": "bg-1",
+				"container": "flex"
+			},
+			"sectionHeader": {
+				"title": "Medical Technology at Its Peak",
+				"subtitle": "We invest in the latest medical infrastructure to ensure earlier detection, safer procedures, and faster recovery times for our patients."
+			},
+			"image": "/images/technology.webp",
+			"items": [
+				{
+					"icon": "robo-arm",
+					"title": "Robotic-Assisted Surgery",
+					"text": "Minimally invasive procedures with sub-millimeter precision."
+				},
+				{
+					"icon": "microscope",
+					"title": "Next-Gen Diagnostics",
+					"text": "AI-enhanced imaging for accurate and early diagnosis."
+				},
+				{
+					"icon": "safety",
+					"title": "Verified Safety Protocols",
+					"text": "Adhering to the highest international hospital safety standards."
+				}
+			]
+		},
+
+		"cta": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"title": "Join Our Community of Healthy Patients",
+			"text": "Ready to experience the future of healthcare? Book your initial consultation with one of our world-class specialists today.",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "white",
+					"url": "/appointment"
+				},
+				{
+					"text": "Contact Our Support",
+					"variant": "outline",
+					"color": "white",
+					"url": "/contact"
+				}
+			]
+		}
+	}
+}

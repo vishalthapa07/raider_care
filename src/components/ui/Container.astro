@@ -1,0 +1,56 @@
+---
+export interface Props {
+	class?: string;
+	type?: "default" | "flex" | "flex-column";
+}
+
+const { class: className, type = "default" } = Astro.props;
+const classes = [
+	"container",
+	type === "flex" ? "container--row" : "",
+	type === "flex-column" ? "container--column" : "",
+	className,
+]
+	.filter(Boolean)
+	.join(" ");
+---
+
+<div class={classes}>
+	<slot />
+</div>
+
+<style>
+	.container {
+		max-width: 120rem;
+		margin-inline: auto;
+
+		&.container--row {
+			display: flex;
+			gap: var(--global-gap);
+
+			@media screen and (max-width: 1024px) {
+				flex-wrap: wrap;
+			}
+		}
+
+		&.container--footer {
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--global-gap);
+
+			@media screen and (max-width: 640px) {
+				flex-direction: column;
+				gap: 6rem;
+			}
+		}
+
+		&.container--column {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: var(--content-gap);
+		}
+	}
+</style>

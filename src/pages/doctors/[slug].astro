@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import DoctorLayout from "@/layouts/DoctorLayout.astro";
+import DoctorHero from "@/components/blocks/doctors/DoctorHero.astro";
+import DoctorInfoSection from "@/components/blocks/doctors/DoctorInfoSection.astro";
+import CtaSection from "@/components/blocks/CtaSection.astro";
+
+interface Props {
+	doctor: CollectionEntry<"doctors">;
+}
+
+export async function getStaticPaths() {
+	const doctors = await getCollection("doctors");
+
+	return doctors.map((doctor) => ({
+		params: { slug: doctor.data.slug },
+		props: { doctor },
+	}));
+}
+
+const { doctor } = Astro.props as Props;
+const { Content } = await render(doctor);
+---
+
+<DoctorLayout
+	title={doctor.data.seo.title}
+	description={doctor.data.seo.description}
+	slug={doctor.data.slug}
+>
+	<DoctorHero doctor={doctor.data} />
+	<DoctorInfoSection doctor={doctor.data} content={Content} />
+	<CtaSection
+		data={{
+			config: { class: "doctor-page__cta", bacground: "bg-1" },
+			title: `Book a consultation with ${doctor.data.name}`,
+			text: `Schedule an appointment with ${doctor.data.name} for personalized care.`,
+			buttons: [
+				{
+					url: `mailto:${doctor.data.email}`,
+					variant: "solid",
+					color: "white",
+					text: "Contact by email",
+				},
+				{
+					url: `tel:${doctor.data.phone}`,
+					variant: "outline",
+					color: "white",
+					text: "Call now",
+				},
+			],
+		}}
+	/>
+</DoctorLayout>

@@ -1,0 +1,70 @@
+---
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+
+import Section from "@ui/Section.astro";
+import Column from "@ui/Column.astro";
+import ImageHolder from "@ui/ImageHolder.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	background={props.config.background}
+	container={props.config.container}
+>
+	<Column>
+		<ImageHolder>
+			<Picture
+				src={props.image}
+				alt=""
+				width={550}
+				height={450}
+				format={["avif", "webp"]}
+				sizes={"(min-width: 1024px) 60vw, 100vw"}
+			/>
+		</ImageHolder>
+	</Column>
+	<Column class="content">
+		{props.sectionHeader.title && <h2 set:html={props.sectionHeader.title} />}
+		{
+			props.sectionHeader.subtitle && (
+				<p class="subtitle" set:html={props.sectionHeader.subtitle} />
+			)
+		}
+
+		{
+			props.items && (
+				<ul>
+					{props.items.map((item: any) => (
+						<li class="card">
+							<span class="card-icon">
+								<Icon name={item.icon} />
+							</span>
+							<div>
+								<h3>{item.title}</h3>
+								<p>{item.text}</p>
+							</div>
+						</li>
+					))}
+				</ul>
+			)
+		}
+	</Column>
+</Section>
+
+<style>
+	ul {
+		li {
+			margin-bottom: var(--content-gap);
+			display: flex;
+			gap: 1.6rem;
+		}
+	}
+</style>

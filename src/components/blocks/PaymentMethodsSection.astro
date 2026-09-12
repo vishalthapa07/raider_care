@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	<ul class="payments-list">
+		{
+			props.items.map((item: any) => (
+				<li class="payments__item">
+					<Icon name={item.icon} />
+					<span>{item.text}</span>
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.payments-list {
+		display: flex;
+		gap: 4rem;
+		justify-content: center;
+
+		@media screen and (max-width: 990px) {
+			flex-wrap: wrap;
+		}
+
+		@media screen and (max-width: 640px) {
+			flex-direction: column;
+		}
+	}
+
+	.payments__item {
+		display: flex;
+		color: var(--color-white);
+		align-items: center;
+		gap: 0.8rem;
+
+		@media screen and (max-width: 640px) {
+			justify-content: center;
+		}
+
+		svg {
+			font-size: 2rem;
+		}
+
+		span {
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+	}
+</style>

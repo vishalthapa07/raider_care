@@ -1,0 +1,119 @@
+{
+	"pageTitle": "Services | Medicsare Clinic",
+	"sections": {
+		"hero": {
+			"config": {
+				"class": "section--hero",
+				"background": "bg-1",
+				"container": "flex"
+			},
+			"title": "Comprehensive <strong>Medical Services</strong>",
+			"subtitle": "At Medicsare, we combine advanced medical technology with personalized treatment plans to ensure the best outcomes for our patients. Your health is our priority, delivered with compassion and expertise.",
+			"image": "service.webp",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "primary",
+					"url": "/appointment"
+				},
+				{
+					"text": "Contact Us",
+					"variant": "outline",
+					"color": "primary",
+					"url": "/contact"
+				}
+			]
+		},
+
+		"services": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"sectionHeader": {
+				"title": "Our Medical Departments",
+				"subtitle": "Specialized care across multiple disciplines to cover all your health needs."
+			},
+			"items": [
+				{
+					"title": "Crardiology",
+					"text": "Comprehensive heart care focusing on prevention, diagnosis, and treatment of cardiovascular disorders using non-invasive techniques.",
+					"icon": "cardio",
+					"link": {
+						"url": "/services/cardiology",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Neurology",
+					"text": "Advanced diagnostic and therapeutic services for complex disorders of the brain, spinal cord, and peripheral nervous system.",
+					"icon": "brain",
+					"link": {
+						"url": "/services/neurology",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Pediatric",
+					"text": "Gentle, child-centered medical care for infants, children, and adolescents, covering wellness checkups and acute illnesses.",
+					"icon": "face",
+					"link": {
+						"url": "/services/pediatric",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Orthopedics",
+					"text": "Expert care for musculoskeletal injuries, joint health, and spinal conditions, from physical therapy to minimally invasive surgery.",
+					"icon": "spine",
+					"link": {
+						"url": "/services/ortho",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Laboratory",
+					"text": "Precision testing and rapid results from our state-of-the-art on-site diagnostic laboratory facility.",
+					"icon": "farma",
+					"link": {
+						"url": "/services/laboratory",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				},
+				{
+					"title": "Radiology",
+					"text": "State-of-the-art medical imaging services including MRI, CT scans, digital X-rays, and ultrasound for precise internal diagnosis.",
+					"icon": "bones",
+					"link": {
+						"url": "/services/laboratory",
+						"text": "View Department",
+						"icon": "arrow-right"
+					}
+				}
+			]
+		},
+
+		"cta": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-2"
+			},
+			"title": "Can't find a specific service?",
+			"text": "Our patient coordinators are available to help you find the right specialist for your needs.",
+			"buttons": [
+				{
+					"text": "Contact Us",
+					"variant": "solid",
+					"color": "white",
+					"url": "/contact"
+				}
+			]
+		}
+	}
+}

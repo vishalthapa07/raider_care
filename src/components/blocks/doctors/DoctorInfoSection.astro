@@ -1,0 +1,285 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "@/components/ui/Section.astro";
+import type { DoctorContent } from "@/content/types";
+
+interface Props {
+	doctor: DoctorContent;
+	content: any;
+}
+
+const { doctor, content: Content } = Astro.props;
+
+const hours = Object.entries(doctor.workingHours);
+---
+
+<Section class="doctor-page__content" background="bg-2" container="default">
+	<div class="doctor-info__wrapper">
+		<div class="doctor-info__col">
+			<div class="doctor-about card">
+				<div class="card__content doctor-about__content">
+					<Content />
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card__title">Focus Areas</h3>
+				<div class="focus-areas__grid">
+					{
+						doctor.focusAreas.map((area) => (
+							<article class="focus-areas__item">
+								<h4 class="focus-areas__item-title">{area.title}</h4>
+								<p class="focus-areas__item-description">{area.description}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="card">
+				<h3 class="card__title">Education & Experience</h3>
+				<ul class="education__list">
+					{
+						doctor.education.map((item) => (
+							<li class="education__item">
+								<div class="education__year">{item.year}</div>
+								<div class="education__degree">{item.degree}</div>
+								<div class="education__institution">{item.institution}</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="card">
+				<h3 class="card__title">Certificates</h3>
+				<ul class="certificates__list">
+					{
+						doctor.certificates.map((item) => (
+							<li class="certificates__item">
+								<div class="certificates__title-text">{item.title}</div>
+								<div class="certificates__year">{item.year}</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+
+		<div class="doctor-info__col">
+			<div class="card card--sticky">
+				<h3 class="card__title card__title--row">
+					<Icon name="clock" class="text-primary" />
+					Working Hours
+				</h3>
+				<ul class="working-hours__list">
+					{
+						hours.map(([day, value]) => (
+							<li class="working-hours__item">
+								<span class="working-hours__day">{day}</span>
+								<span class="working-hours__value">{value}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</div>
+</Section>
+
+<style>
+	.doctor-about__content :global(p) {
+		margin-bottom: 2rem;
+		line-height: 1.7;
+		color: var(--color-muted);
+	}
+
+	.doctor-about__content :global(h2),
+	.doctor-about__content :global(h3) {
+		margin-bottom: 1.6rem;
+		font-size: 2.4rem;
+	}
+
+	.doctor-page__content {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 1.5rem 3rem;
+	}
+
+	.doctor-info__wrapper {
+		display: flex;
+		gap: var(--global-gap);
+
+		@media screen and (max-width: 768px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	.doctor-info__col {
+		display: flex;
+		flex-direction: column;
+		gap: var(--global-gap);
+
+		&:nth-child(1) {
+			width: 65%;
+
+			@media screen and (max-width: 1024px) {
+				width: 55%;
+			}
+
+			@media screen and (max-width: 768px) {
+				width: 100%;
+			}
+		}
+
+		&:nth-child(2) {
+			width: 35%;
+
+			@media screen and (max-width: 768px) {
+				width: 100%;
+				order: -1;
+			}
+		}
+	}
+
+	/* working hours */
+	.working-hours__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.working-hours__item {
+		display: flex;
+		justify-content: space-between;
+		padding: 0.9rem 1rem;
+
+		&:not(:last-of-type) {
+			border-bottom: 1px solid #e8eef8;
+		}
+
+		&:last-of-type {
+			.working-hours__value {
+				color: #d04436;
+			}
+		}
+	}
+
+	.working-hours__day {
+		color: var(--color-title);
+		text-transform: capitalize;
+	}
+
+	/* focus areas */
+	.focus-areas__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.6rem;
+	}
+
+	.focus-areas__item {
+		padding: 1.6rem;
+		border: 1px solid var(--color-card-border);
+		border-radius: 1.6rem;
+		background: #fff;
+	}
+
+	.focus-areas__item-title {
+		margin-bottom: 1rem;
+		color: var(--color-primary);
+		font-size: 1.8rem;
+	}
+
+	.focus-areas__item-description {
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	@media (max-width: 900px) {
+		.focus-areas__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* education */
+	.education__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 3rem;
+	}
+
+	.education__item {
+		position: relative;
+		display: flex;
+		padding-left: 4rem;
+		flex-direction: column;
+		gap: 1rem;
+
+		&:before,
+		&:after {
+			position: absolute;
+			display: block;
+			content: "";
+		}
+
+		&:before {
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 2.4rem;
+			height: 2.4rem;
+			background-color: var(--color-white);
+			border: 0.4rem solid var(--color-primary);
+			border-radius: 50%;
+		}
+
+		&:after {
+			z-index: 0;
+			top: 0.4rem;
+			left: 1.1rem;
+			width: 0.2rem;
+			height: calc(100% - 0.4rem);
+			background-color: var(--color-border);
+		}
+	}
+
+	.education__degree {
+		font-size: 1.8rem;
+		font-weight: 700;
+	}
+
+	.education__institution {
+		color: var(--color-muted);
+	}
+
+	.education__year {
+		color: var(--color-primary);
+		font-size: 1.4rem;
+	}
+
+	/* certificates */
+	.certificates__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 1rem;
+	}
+
+	.certificates__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 1.25rem;
+		border: 1px solid var(--color-card-border);
+		border-radius: 1rem;
+	}
+
+	.certificates__year {
+		font-weight: 600;
+	}
+</style>

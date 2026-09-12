@@ -1,0 +1,76 @@
+---
+import { withBase } from "@lib/urls";
+import Button from "@ui/Button.astro";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section class={props.config.class} background={props.config.bacground}>
+	<div class="cta">
+		{props.title && <h2 class="text-white" set:html={props.title} />}
+		{props.title && <p class="subtitle" set:html={props.text} />}
+		{
+			props.buttons && (
+				<div class="actions">
+					{props.buttons.map((btn: any) => (
+						<Button href={withBase(btn.url)} variant={btn.variant} color={btn.color}>
+							{btn.text}
+						</Button>
+					))}
+				</div>
+			)
+		}
+	</div>
+</Section>
+
+<style>
+	.cta {
+		position: relative;
+		display: flex;
+		padding-block: clamp(3rem, calc(0.653rem + 4.789vw), 6.4rem);
+		padding-inline: clamp(2rem, calc(-1.037rem + 6.197vw), 6.4rem);
+		flex-direction: column;
+		align-items: center;
+		color: var(--color-white);
+		gap: 1.6rem;
+		text-align: center;
+		border-radius: 2.4rem;
+		background-color: var(--color-primary);
+		overflow: hidden;
+
+		&:before,
+		&:after {
+			--size: 26rem;
+
+			position: absolute;
+			display: block;
+			width: 26rem;
+			height: 26rem;
+			content: "";
+			filter: blur(80px);
+			border-radius: 50%;
+			background-color: rgba(255,255,255,0.5);
+		}
+
+		&:before {
+			left: calc(var(--size) / -2);
+			top: calc(var(--size) / -2);
+		}
+
+		&:after {
+			right: calc(var(--size) / -2);
+			bottom: calc(var(--size) / -2);
+		}
+
+	p {
+		max-width: 60rem;
+		line-height: 1.77;
+	}
+</style>

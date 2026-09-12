@@ -1,0 +1,123 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	<ul class="accordion">
+		{
+			props.items.map((item: any, index: number) => (
+				<li class="accordion__item">
+					<button
+						type="button"
+						class="accordion__title"
+						id={`faq-button-${index}`}
+						aria-expanded="false"
+						aria-controls={`faq-content-${index}`}
+					>
+						{item.question}
+						<Icon name="chevron-down" />
+					</button>
+					<div
+						class="accordion__content"
+						id={`faq-content-${index}`}
+						role="region"
+						aria-labelledby={`faq-button-${index}`}
+					>
+						<div class="accordion__inner">{item.answer}</div>
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.accordion {
+		display: flex;
+		width: 100%;
+		max-width: 80rem;
+		margin: 0 auto;
+		flex-direction: column;
+		gap: 1.6rem;
+	}
+
+	.accordion__item {
+		border-radius: 1.6rem;
+		border: 1px solid var(--color-card-border);
+		background-color: var(--color-white);
+	}
+
+	.accordion__title {
+		display: flex;
+		width: 100%;
+		padding: 2.4rem;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2rem;
+		color: var(--color-title);
+		font-size: 1.8rem;
+		text-align: left;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+
+		svg {
+			position: relative;
+			font-size: 2.4rem;
+			transition: all 0.3s ease;
+		}
+	}
+
+	.accordion__content {
+		max-height: 0;
+		line-height: 1.75;
+		overflow: hidden;
+		transition:
+			max-height 0.3s ease,
+			padding 0.3s ease;
+	}
+
+	.accordion__item.is-active {
+		.accordion__content {
+			max-height: auto;
+		}
+
+		.accordion__title svg {
+			transform: rotate(180deg);
+		}
+	}
+
+	.accordion__inner {
+		padding: 2.4rem;
+		border-top: 1px solid var(--color-card-border);
+	}
+</style>
+
+<script>
+	document.querySelectorAll(".accordion__item").forEach((item) => {
+		const title = item.querySelector(".accordion__title");
+		const content = item.querySelector(".accordion__content");
+		const toggle = (open: boolean) => {
+			item.classList.toggle("is-active", open);
+			title.setAttribute("aria-expanded", String(open));
+			content.style.maxHeight = open ? content.scrollHeight + "px" : null;
+		};
+
+		title.addEventListener("click", () => {
+			toggle(!item.classList.contains("is-active"));
+		});
+	});
+</script>

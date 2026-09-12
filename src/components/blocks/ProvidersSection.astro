@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	<ul class="providers-list">
+		{
+			props.items.map((item: any) => (
+				<li class="providers__item card">
+					<Image src={item.image} width={150} height={50} alt={item.name} />
+				</li>
+			))
+		}
+	</ul>
+</Section>
+
+<style>
+	.providers-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--content-gap);
+		justify-content: center;
+	}
+
+	.providers__item {
+		padding: calc(var(--content-gap) / 2);
+		width: 17rem;
+		flex: 0 0 auto;
+		border-radius: 1.6rem;
+	}
+</style>

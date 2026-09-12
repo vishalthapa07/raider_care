@@ -1,0 +1,128 @@
+{
+	"pageTitle": "Cerdiology service",
+	"slug": "cardiology",
+	"sections": {
+		"hero": {
+			"config": {
+				"class": "section--hero",
+				"background": "bg-1",
+				"container": "flex"
+			},
+			"title": "Advanced <strong>Cardiology</strong> Services",
+			"subtitle": "World-class heart care blending cutting-edge clinical technology with compassionate, patient-centered healing environments.",
+			"image": "hero-image.webp",
+			"buttons": [
+				{
+					"text": "Book Consultation",
+					"variant": "solid",
+					"color": "primary",
+					"url": "/appointment"
+				},
+				{
+					"text": "Meet Our Doctors",
+					"variant": "outline",
+					"color": "primary",
+					"url": "/doctors"
+				}
+			]
+		},
+		"areas": {
+			"config": {
+				"background": "bg-2"
+			},
+			"sectionHeader": {
+				"title": "Specialized Care Areas",
+				"subtitle": "Comprehensive treatment options tailored to every aspect of heart health."
+			},
+			"items": [
+				{
+					"title": "Heart Failure Management",
+					"text": "Comprehensive, long-term care plans focusing on improving quality of life and managing symptoms effectively.",
+					"icon": "cardio"
+				},
+				{
+					"title": "Interventional Cardiology",
+					"text": "Minimally invasive procedures including angioplasty and stenting to treat coronary artery disease.",
+					"icon": "cardio"
+				},
+				{
+					"title": "Electrophysiology",
+					"text": "Diagnosis and treatment of heart rhythm disorders (arrhythmias) using advanced mapping and ablation techniques.",
+					"icon": "cardio"
+				},
+				{
+					"title": "Preventive Cardiology",
+					"text": "Proactive risk assessment, lifestyle coaching, and medical management to prevent cardiovascular events before they occur.",
+					"icon": "cardio"
+				},
+				{
+					"title": "Pediatric Cardiology",
+					"text": "Compassionate heart care for infants, children, and adolescents with congenital or acquired heart conditions.",
+					"icon": "cardio"
+				},
+				{
+					"title": "Cardiovascular Rehabilitation",
+					"text": "Structured exercise and education programs designed to help patients recover and improve heart health after surgery or a cardiac event.",
+					"icon": "cardio"
+				}
+			]
+		},
+
+		"testimonials": {
+			"config": {
+				"class": "section--centered",
+				"background": "bg-1"
+			},
+			"sectionHeader": {
+				"title": "Patient Testimonials",
+				"subtitle": "Real stories from our patients who chose Medicsare Clinic cardiology service."
+			},
+			"items": [
+				{
+					"quote": "The doctors listened carefully, made me feel safe, and guided me through every step of treatment.",
+					"name": "Kimberly Overbay",
+					"role": "Patient",
+					"photo": "/images/testimonials/patient-1.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "Thanks to the team, I received fast and compassionate care that made a real difference.",
+					"name": "Joseph Murphy",
+					"role": "Patient",
+					"photo": "/images/testimonials/patient-2.jpg",
+					"rating": 4
+				},
+				{
+					"quote": "The clinic was modern, the staff were professional, and they took the time to explain everything clearly.",
+					"name": "Gloria McNeill",
+					"role": "Patient",
+					"photo": "/images/testimonials/patient-3.jpg",
+					"rating": 5
+				},
+				{
+					"quote": "I felt supported from first appointment to recovery thanks to their compassionate team.",
+					"name": "Melissa Corrigan",
+					"role": "Patient",
+					"photo": "/images/testimonials/patient-3.jpg",
+					"rating": 5
+				}
+			]
+		},
+
+		"cta": {
+			"config": {
+				"class": "section--centered"
+			},
+			"title": "Ready To Get Professional Help?",
+			"text": "Sign up for a consultation today and start your path to a healthy life with Medicsare experts.",
+			"buttons": [
+				{
+					"text": "Book Appointment",
+					"variant": "solid",
+					"color": "white",
+					"url": "/appointment"
+				}
+			]
+		}
+	}
+}

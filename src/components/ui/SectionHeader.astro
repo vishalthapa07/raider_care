@@ -1,0 +1,44 @@
+---
+interface Props {
+	data: any;
+	level?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+const { data: { ...props }, level = 2 } = Astro.props;
+const HeadingTag = `h${level}`;
+
+const hasHeaderContent = Boolean(
+	props.eyebrow || props.title || props.subtitle,
+);
+---
+
+{
+	hasHeaderContent && (
+		<div class="section-header">
+			{props.eyebrow && <p class="eyebrow" set:html={props.eyebrow} />}
+			{props.title && <HeadingTag set:html={props.title} />}
+			{props.subtitle && <p class="subtitle" set:html={props.subtitle} />}
+		</div>
+	)
+}
+
+<style>
+	.section-header {
+		margin-bottom: 6rem;
+		text-align: center;
+	}
+
+	.section-header h1 {
+		font-size: clamp(2.6rem, 1.2rem + 3.5vw, 4rem);
+		line-height: 1.2;
+	}
+
+	.eyebrow {
+		margin-bottom: 1.6rem;
+		color: var(--color-primary);
+		font-size: 1.4rem;
+		font-weight: 700;
+		letter-spacing: 1.4px;
+		text-transform: uppercase;
+	}
+</style>

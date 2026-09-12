@@ -1,0 +1,21 @@
+---
+import siteConfig from "../../siteConfig";
+import { Icon } from "astro-icon/components";
+---
+
+<a href="/" class="logo">
+	<Icon name="logo" />
+	{siteConfig.name}
+</a>
+
+<style>
+	.logo {
+		display: inline-flex;
+		gap: 1rem;
+		align-items: center;
+
+		svg {
+			font-size: 3rem;
+		}
+	}
+</style>

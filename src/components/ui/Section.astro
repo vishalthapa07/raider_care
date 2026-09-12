@@ -1,0 +1,84 @@
+---
+import Container from "@ui/Container.astro";
+import SectionHeader from "./SectionHeader.astro";
+
+export interface Props {
+	id?: string;
+	class?: string;
+	background?: "bg-1" | "bg-2";
+	container?: "default" | "flex" | "flex-column";
+	sectionHeader?: any;
+	headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+}
+
+const {
+	id,
+	class: className,
+	background,
+	container = "default",
+	sectionHeader = {},
+	headingLevel = 2,
+} = Astro.props;
+const classes = ["section", className, background].filter(Boolean).join(" ");
+---
+
+<section id={id} class={classes}>
+	<Container type={container}>
+		<SectionHeader data={sectionHeader} level={headingLevel} />
+		<slot />
+	</Container>
+</section>
+
+<style>
+	.section {
+		padding-block: var(--section-padding-block);
+		padding-inline: var(--section-padding-inline);
+
+		&.bg-1 {
+			background-color: #faf8ff;
+		}
+
+		&.bg-2 {
+			background-color: #eef6ff;
+		}
+
+		&.section--centered {
+			.section-header {
+				text-align: center;
+			}
+		}
+
+		&.section--full-height {
+			height: 100%;
+		}
+
+		&.section--color-1 {
+			background-color: #f3f7fd;
+		}
+
+		&.section--primary {
+			padding-block: 6.4rem;
+			background-color: var(--color-primary);
+		}
+
+		&.section--info {
+			padding-block: 6.4rem;
+			color: var(--color-white);
+
+			.section-header {
+				margin-bottom: 3.2rem;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				color: var(--color-white);
+				font-size: 1.6rem;
+				text-transform: uppercase;
+			}
+		}
+	}
+</style>

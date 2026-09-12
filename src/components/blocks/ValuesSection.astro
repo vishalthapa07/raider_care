@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "@ui/Section.astro";
+
+interface Props {
+	data: any;
+}
+
+const {
+	data: { ...props },
+} = Astro.props;
+---
+
+<Section
+	class={props.config.class}
+	background={props.config.background}
+	sectionHeader={props.sectionHeader}
+>
+	{
+		props.items && (
+			<ul class="values-list">
+				{props.items.map((item: any) => (
+					<li class="card values__item">
+						<span class="card-icon">
+							<Icon name={item.icon} />
+						</span>
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</Section>
+
+<style>
+	.values-list {
+		display: grid;
+		margin-top: 6rem;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--global-gap);
+
+		@media screen and (max-width: 768px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.values__item {
+		display: flex;
+		flex-direction: column;
+		gap: 1.6rem;
+		grid-column: span 1;
+		border: 1px solid var(--color-card-border);
+
+		p {
+			line-height: 1.75;
+		}
+	}
+</style>
