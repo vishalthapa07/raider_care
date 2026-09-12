@@ -1,5 +1,5 @@
 {
-	"pageTitle": "Services | RaiderCare",
+	"pageTitle": "Health Services | RaiderCare",
 	"sections": {
 		"hero": {
 			"config": {
@@ -7,21 +7,21 @@
 				"background": "bg-1",
 				"container": "flex"
 			},
-			"title": "Comprehensive <strong>Medical Services</strong>",
-			"subtitle": "At RaiderCare, we combine advanced medical technology with personalized treatment plans to ensure the best outcomes for our patients. Your health is our priority, delivered with compassion and expertise.",
-			"image": "service.webp",
+			"title": "Health Guidance for <strong>Your Next Step</strong>",
+			"subtitle": "RaiderCare helps you understand what to do when you're not feeling well. Share your symptoms, receive clear health guidance, find the right type of healthcare professional, and quickly access emergency help when it matters most.",
+			"image": "hero-image.webp",
 			"buttons": [
 				{
-					"text": "Find your health expert",
+					"text": "Check Your Symptoms",
 					"variant": "solid",
 					"color": "primary",
 					"url": "/care-finder"
 				},
 				{
-					"text": "Contact Us",
+					"text": "Emergency Help",
 					"variant": "outline",
 					"color": "primary",
-					"url": "/contact"
+					"url": "tel:911"
 				}
 			]
 		},
@@ -32,67 +32,67 @@
 				"background": "bg-2"
 			},
 			"sectionHeader": {
-				"title": "Our Medical Departments",
-				"subtitle": "Specialized care across multiple disciplines to cover all your health needs."
+				"title": "How RaiderCare Can Help",
+				"subtitle": "From understanding symptoms to finding the right care, RaiderCare helps turn health concerns into clear and actionable next steps."
 			},
 			"items": [
 				{
-					"title": "Crardiology",
-					"text": "Comprehensive heart care focusing on prevention, diagnosis, and treatment of cardiovascular disorders using non-invasive techniques.",
-					"icon": "cardio",
+					"title": "Symptom Guidance",
+					"text": "Tell RaiderCare what you are experiencing and receive easy-to-understand guidance based on your symptoms, their duration, and severity.",
+					"icon": "stetoscope",
 					"link": {
-						"url": "/services/cardiology",
-						"text": "View Department",
+						"url": "/care-finder",
+						"text": "Check Symptoms",
 						"icon": "arrow-right"
 					}
 				},
 				{
-					"title": "Neurology",
-					"text": "Advanced diagnostic and therapeutic services for complex disorders of the brain, spinal cord, and peripheral nervous system.",
-					"icon": "brain",
+					"title": "Smart Care Navigation",
+					"text": "RaiderCare helps identify the most appropriate type of healthcare professional or department for your concern so you know where to go next.",
+					"icon": "care",
 					"link": {
-						"url": "/services/neurology",
-						"text": "View Department",
+						"url": "/care-finder",
+						"text": "Find My Care",
 						"icon": "arrow-right"
 					}
 				},
 				{
-					"title": "Pediatric",
-					"text": "Gentle, child-centered medical care for infants, children, and adolescents, covering wellness checkups and acute illnesses.",
-					"icon": "face",
+					"title": "Immediate Self-Care Guidance",
+					"text": "For non-emergency concerns, RaiderCare provides basic educational steps you may take while monitoring your symptoms or waiting to speak with a healthcare professional.",
+					"icon": "heart",
 					"link": {
-						"url": "/services/pediatric",
-						"text": "View Department",
+						"url": "/care-finder",
+						"text": "Get Guidance",
 						"icon": "arrow-right"
 					}
 				},
 				{
-					"title": "Orthopedics",
-					"text": "Expert care for musculoskeletal injuries, joint health, and spinal conditions, from physical therapy to minimally invasive surgery.",
-					"icon": "spine",
+					"title": "Emergency Support",
+					"text": "RaiderCare checks for important warning signs and makes emergency assistance easy to access when symptoms may require immediate medical attention.",
+					"icon": "safety",
 					"link": {
-						"url": "/services/ortho",
-						"text": "View Department",
+						"url": "tel:911",
+						"text": "Call 911",
 						"icon": "arrow-right"
 					}
 				},
 				{
-					"title": "Laboratory",
-					"text": "Precision testing and rapid results from our state-of-the-art on-site diagnostic laboratory facility.",
-					"icon": "farma",
+					"title": "Find a Health Expert",
+					"text": "Based on your health concern, RaiderCare helps guide you toward an appropriate healthcare professional instead of leaving you to search through endless information.",
+					"icon": "head",
 					"link": {
-						"url": "/services/laboratory",
-						"text": "View Department",
+						"url": "/doctors",
+						"text": "View Health Experts",
 						"icon": "arrow-right"
 					}
 				},
 				{
-					"title": "Radiology",
-					"text": "State-of-the-art medical imaging services including MRI, CT scans, digital X-rays, and ultrasound for precise internal diagnosis.",
-					"icon": "bones",
+					"title": "Private & Secure Experience",
+					"text": "RaiderCare is designed with privacy and security in mind so users can confidently access personalized health navigation and protected account features.",
+					"icon": "feature",
 					"link": {
-						"url": "/services/laboratory",
-						"text": "View Department",
+						"url": "/privacy",
+						"text": "Learn About Privacy",
 						"icon": "arrow-right"
 					}
 				}
@@ -104,14 +104,14 @@
 				"class": "section--centered",
 				"background": "bg-2"
 			},
-			"title": "Can't find a specific service?",
-			"text": "Our patient coordinators are available to help you find the right specialist for your needs.",
+			"title": "Not sure where to start?",
+			"text": "Tell RaiderCare what you're experiencing. We'll help you understand the next appropriate step and connect you with the right care option.",
 			"buttons": [
 				{
-					"text": "Contact Us",
+					"text": "Start Care Finder",
 					"variant": "solid",
 					"color": "white",
-					"url": "/contact"
+					"url": "/care-finder"
 				}
 			]
 		}
