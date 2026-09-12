@@ -34,13 +34,10 @@ const siteConfig: SiteConfig = {
 		main: [
 			{ text: "About us", url: "/about" },
 			{ text: "Services", url: "/services" },
-			{ text: "Doctors", url: "/doctors" },
 			{ text: "Contact", url: "/contact" }
 		],
 		info: [
 			{ text: "Services", url: "/services" },
-			{ text: "Doctors", url: "/doctors" },
-			{ text: "Pricing", url: "/pricing" }
 		],
 		support: [
 			{ text: "About us", url: "/about" },

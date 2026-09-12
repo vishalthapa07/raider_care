@@ -7,7 +7,6 @@ import WhySection from "@components/blocks/WhySection.astro";
 import StatisticsSection from "@components/blocks/StatisticsSection.astro";
 import TestimonialsSection from "@components/blocks/TestimonialsSection.astro";
 import CtaSection from "@components/blocks/CtaSection.astro";
-
 import data from "../content/HomePage.json";
 ---
 
@@ -15,7 +14,6 @@ import data from "../content/HomePage.json";
   title={data.pageTitle}
   description=`${data.pageTitle} description place here`
 >
-  <h1>hello</h1>
   {data.sections.hero && <HeroSection data={data.sections.hero} />}
   {data.sections.services && <ServicesSection data={data.sections.services} />}
   {data.sections.why && <WhySection data={data.sections.why} />}
