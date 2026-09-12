@@ -12,10 +12,10 @@
 			"image": "hero-image.webp",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find you health expert",
 					"variant": "solid",
 					"color": "primary",
-					"url": "/appointment"
+					"url": "#"
 				},
 				{
 					"text": "Our Services",
@@ -75,7 +75,7 @@
 				"background": "bg-1"
 			},
 			"sectionHeader": {
-				"title": "Why patients choose Medicsare Clinic",
+				"title": "Why patients choose RaiderCare",
 				"subtitle": "We combine decades of medical expertise with the latest technological advancements to provide world-class healthcare."
 			},
 			"reasons": [
@@ -135,7 +135,7 @@
 			"sectionHeader": {
 				"eyebrow": "Patient Testimonials",
 				"title": "What our patients say",
-				"subtitle": "Real stories from our patients who chose Medicsare Clinic for their care and trust our expertise."
+				"subtitle": "Real stories from our patients who chose RaiderCare for their care and trust our expertise."
 			},
 			"items": [
 				{
@@ -189,13 +189,13 @@
 				"background": "bg-2"
 			},
 			"title": "Ready To Get Professional Help?",
-			"text": "Sign up for a consultation today and start your path to a healthy life with Medicsare experts.",
+			"text": "Sign up for a consultation today and start your path to a healthy life with RaiderCare experts.",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find you health expert",
 					"variant": "solid",
 					"color": "white",
-					"url": "/appointment"
+					"url": "#"
 				}
 			]
 		}

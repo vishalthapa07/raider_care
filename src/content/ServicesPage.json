@@ -1,5 +1,5 @@
 {
-	"pageTitle": "Services | Medicsare Clinic",
+	"pageTitle": "Services | RaiderCare",
 	"sections": {
 		"hero": {
 			"config": {
@@ -8,11 +8,11 @@
 				"container": "flex"
 			},
 			"title": "Comprehensive <strong>Medical Services</strong>",
-			"subtitle": "At Medicsare, we combine advanced medical technology with personalized treatment plans to ensure the best outcomes for our patients. Your health is our priority, delivered with compassion and expertise.",
+			"subtitle": "At RaiderCare, we combine advanced medical technology with personalized treatment plans to ensure the best outcomes for our patients. Your health is our priority, delivered with compassion and expertise.",
 			"image": "service.webp",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "primary",
 					"url": "/appointment"

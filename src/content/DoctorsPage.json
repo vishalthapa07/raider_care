@@ -1,5 +1,5 @@
 {
-	"pageTitle": "Our Doctors | Medicsare Clinic",
+	"pageTitle": "Our Doctors | RaiderCare",
 	"sections": {
 		"hero": {
 			"config": {
@@ -8,14 +8,14 @@
 				"container": "flex"
 			},
 			"title": "Expert Care from Our <strong>Medical Specialists</strong>",
-			"subtitle": "Meet our world-class team of specialists dedicated to providing exceptional healthcare with a human touch. Every physician at Medicsare is board-certified and a leader in their field.",
+			"subtitle": "Meet our world-class team of specialists dedicated to providing exceptional healthcare with a human touch. Every physician at RaiderCare is board-certified and a leader in their field.",
 			"image": "hero-image.webp",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find you health expert",
 					"variant": "solid",
 					"color": "primary",
-					"url": "/appointment"
+					"url": "#"
 				},
 				{
 					"text": "Our Services",

@@ -1,5 +1,5 @@
 {
-	"pageTitle": "About us | Medicsare Clinic",
+	"pageTitle": "About us | RaiderCare",
 	"sections": {
 		"hero": {
 			"config": {
@@ -8,21 +8,22 @@
 				"container": "flex"
 			},
 			"title": "Dedicated to Your <strong>Health</strong> and <strong>Wellbeing</strong>",
-			"subtitle": "Since our inception, Medicsare Clinic has been at the forefront of medical innovation. We combine world-class expertise with a deeply personal touch, ensuring every patient receives the specialized care they deserve.",
+			"subtitle": "Since our inception, RaiderCare has been at the forefront of medical innovation. We combine world-class expertise with a deeply personal touch, ensuring every patient receives the specialized care they deserve.",
 			"image": "team.webp",
 			"buttons": [
 				{
-					"text": "Expolre services",
+					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "primary",
-					"url": "/services"
+					"url": "#"
 				},
 				{
-					"text": "View our team",
+					"text": "Expolre services",
 					"variant": "outline",
 					"color": "primary",
-					"url": "/doctors"
+					"url": "/services"
 				}
+				
 			]
 		},
 
@@ -105,7 +106,7 @@
 				{
 					"year": 2008,
 					"title": "Foundation",
-					"text": "Medicsare opens its doors as a specialized family practice in the heart of the city."
+					"text": "RaiderCare opens its doors as a specialized family practice in the heart of the city."
 				},
 				{
 					"year": 2015,
@@ -158,7 +159,7 @@
 			"text": "Ready to experience the future of healthcare? Book your initial consultation with one of our world-class specialists today.",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "white",
 					"url": "/appointment"

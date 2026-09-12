@@ -7,190 +7,190 @@ import type { DoctorContent } from "@/content/types";
 import { Icon } from "astro-icon/components";
 
 interface Props {
-	doctor: DoctorContent;
+  doctor: DoctorContent;
 }
 
 const { doctor } = Astro.props;
 ---
 
 <Section class="doctor-hero" background="bg-1" container="flex">
-	<Column class="doctor-hero__image-col">
-		<div class="doctor-hero__image-wrap">
-			<img src={doctor.image} alt={doctor.name} class="doctor-hero__image" />
-		</div>
-	</Column>
+  <Column class="doctor-hero__image-col">
+    <div class="doctor-hero__image-wrap">
+      <img src={doctor.image} alt={doctor.name} class="doctor-hero__image" />
+    </div>
+  </Column>
 
-	<Column class="doctor-hero__content-col">
-		{
-			doctor.featured && (
-				<p class="doctor-hero__eyebrow">
-					<span>
-						<Icon name="feature" />
-						Featured doctor
-					</span>
-				</p>
-			)
-		}
-		<h1>{doctor.name}</h1>
-		<p class="doctor-hero__position">{doctor.position}</p>
-		<div class="actions">
-			{
-				doctor.socials.map((item) => {
-					const icon = item.platform.toLowerCase();
+  <Column class="doctor-hero__content-col">
+    {
+      doctor.featured && (
+        <p class="doctor-hero__eyebrow">
+          <span>
+            <Icon name="feature" />
+            Featured doctor
+          </span>
+        </p>
+      )
+    }
+    <h1>{doctor.name}</h1>
+    <p class="doctor-hero__position">{doctor.position}</p>
+    <div class="actions">
+      {
+        doctor.socials.map((item) => {
+          const icon = item.platform.toLowerCase();
 
-					return (
-						<a
-							href={withBase(item.url)}
-							class="social-link"
-							target="_blank"
-							rel="nofollow noopener"
-							aria-label={`${doctor.name} on ${item.platform}`}
-						>
-							<Icon name={icon} aria-hidden="true" />
-						</a>
-					);
-				})
-			}
-		</div>
-		<div class="doctor-hero__meta">
-			<span class="experience">
-				{doctor.experienceYears} years of experience
-			</span>
-			<span class="rating">
-				<span><Icon name="star" />{doctor.rating.toFixed(1)}</span>
-				<span class="reviews">({doctor.reviews} reviews)</span>
-			</span>
-		</div>
-		<div class="actions">
-			<Button href={withBase("/appointment")} variant="solid" color="primary"
-				>Book Appointment</Button
-			>
-			<Button href=`mailto:${doctor.email}` variant="outline" color="primary"
-				>Send Message</Button
-			>
-		</div>
-	</Column>
+          return (
+            <a
+              href={withBase(item.url)}
+              class="social-link"
+              target="_blank"
+              rel="nofollow noopener"
+              aria-label={`${doctor.name} on ${item.platform}`}
+            >
+              <Icon name={icon} aria-hidden="true" />
+            </a>
+          );
+        })
+      }
+    </div>
+    <div class="doctor-hero__meta">
+      <span class="experience">
+        {doctor.experienceYears} years of experience
+      </span>
+      <span class="rating">
+        <span><Icon name="star" />{doctor.rating.toFixed(1)}</span>
+        <span class="reviews">({doctor.reviews} reviews)</span>
+      </span>
+    </div>
+    <div class="actions">
+      <Button href={withBase("#")} variant="solid" color="primary"
+        >Find your health expert</Button
+      >
+      <Button href=`mailto:${doctor.email}` variant="outline" color="primary"
+        >Send Message</Button
+      >
+    </div>
+  </Column>
 </Section>
 
 <style>
-	.social-link {
-		color: var(--color-primary);
-		font-size: 3rem;
-	}
+  .social-link {
+    color: var(--color-primary);
+    font-size: 3rem;
+  }
 
-	.doctor-hero {
-		align-items: center;
-	}
+  .doctor-hero {
+    align-items: center;
+  }
 
-	:global(.doctor-hero__image-col) {
-		flex: 0 0 38rem !important;
+  :global(.doctor-hero__image-col) {
+    flex: 0 0 38rem !important;
 
-		@media screen and (max-width: 768px) {
-			flex: 0 0 auto !important;
-		}
-	}
+    @media screen and (max-width: 768px) {
+      flex: 0 0 auto !important;
+    }
+  }
 
-	:global(.doctor-hero__content-col) {
-		padding: 1.6rem 0;
-		display: flex;
-		flex: 1 1 0;
-		flex-direction: column;
-		gap: 2rem;
+  :global(.doctor-hero__content-col) {
+    padding: 1.6rem 0;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 2rem;
 
-		@media screen and (max-width: 768px) {
-			text-align: center;
-		}
-	}
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
+  }
 
-	.doctor-hero__eyebrow {
-		font-weight: 700;
-		color: var(--color-primary);
+  .doctor-hero__eyebrow {
+    font-weight: 700;
+    color: var(--color-primary);
 
-		span {
-			display: inline-flex;
-			gap: 1rem;
-			align-items: center;
-			padding: 1rem 1.6rem;
-			background-color: var(--color-primary-alpha);
-			border-radius: 2rem;
-		}
-	}
+    span {
+      display: inline-flex;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.6rem;
+      background-color: var(--color-primary-alpha);
+      border-radius: 2rem;
+    }
+  }
 
-	.doctor-hero__speciality {
-		font-size: 1.125rem;
-		font-weight: 600;
-		margin: 0 0 0.25rem;
-	}
+  .doctor-hero__speciality {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
 
-	.doctor-hero__position {
-		margin: 0 0 1rem;
-		color: var(--color-primary);
-		font-size: 2.4rem;
-		font-weight: 600;
-	}
+  .doctor-hero__position {
+    margin: 0 0 1rem;
+    color: var(--color-primary);
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
 
-	.doctor-hero__meta {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		gap: 1rem;
-		font-weight: 600;
+  .doctor-hero__meta {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-weight: 600;
 
-		.rating {
-			display: inline-flex;
-			gap: 1rem;
-			align-items: center;
-			color: var(--color-tertiary);
-			font-weight: 600;
+    .rating {
+      display: inline-flex;
+      gap: 1rem;
+      align-items: center;
+      color: var(--color-tertiary);
+      font-weight: 600;
 
-			@media screen and (max-width: 768px) {
-				justify-content: center;
-			}
+      @media screen and (max-width: 768px) {
+        justify-content: center;
+      }
 
-			svg {
-				font-size: 2rem;
-			}
+      svg {
+        font-size: 2rem;
+      }
 
-			span {
-				display: inline-flex;
-				align-items: center;
-			}
-		}
+      span {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
 
-		.reviews {
-			color: var(--color-text);
-			font-weight: 400;
-		}
+    .reviews {
+      color: var(--color-text);
+      font-weight: 400;
+    }
 
-		.experience {
-			font-weight: 400;
-			color: var(--color-primary);
-		}
-	}
+    .experience {
+      font-weight: 400;
+      color: var(--color-primary);
+    }
+  }
 
-	.doctor-hero__image-wrap {
-		width: 100%;
-		max-width: 38rem;
-		height: 47.5rem;
-		border-radius: 2rem;
-		overflow: hidden;
-		box-shadow: 0 1rem 1.5rem -0.3rem var(--color-shadow);
+  .doctor-hero__image-wrap {
+    width: 100%;
+    max-width: 38rem;
+    height: 47.5rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 1rem 1.5rem -0.3rem var(--color-shadow);
 
-		@media screen and (max-width: 768px) {
-			max-width: unset;
-		}
-	}
+    @media screen and (max-width: 768px) {
+      max-width: unset;
+    }
+  }
 
-	.doctor-hero__image {
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+  .doctor-hero__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-	@media (max-width: 768px) {
-		.doctor-hero__image-col {
-			flex-basis: 100%;
-		}
-	}
+  @media (max-width: 768px) {
+    .doctor-hero__image-col {
+      flex-basis: 100%;
+    }
+  }
 </style>

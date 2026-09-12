@@ -33,7 +33,7 @@ focusAreas:
     icon: shield
 education:
   - degree: Senior Cardiologist
-    institution: Medicsare Clinic
+    institution: RaiderCare
     year: "2018 - PRESENT"
   - degree: Lead Interventionalist
     institution: Heart Research Hospital

@@ -1,5 +1,5 @@
 {
-	"pageTitle": "Pricing & Insurance | Medicsare Clinic",
+	"pageTitle": "Pricing & Insurance | RaiderCare",
 	"sections": {
 		"pricing": {
 			"config": {
@@ -118,7 +118,7 @@
 			},
 			"sectionHeader": {
 				"title": "FAQ",
-				"subtitle": "Find answers to common questions about financial matters at Medicsare."
+				"subtitle": "Find answers to common questions about financial matters at RaiderCare."
 			},
 			"items": [
 				{
@@ -145,10 +145,10 @@
 			"text": "Our financial counseling team is available Monday through Friday to discuss your specific needs and coverage options.",
 			"buttons": [
 				{
-					"text": "Book Appointment",
+					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "white",
-					"url": "/appointment"
+					"url": "#"
 				},
 				{
 					"text": "Contact Billing",
