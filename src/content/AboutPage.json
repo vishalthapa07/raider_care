@@ -15,7 +15,7 @@
 					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "primary",
-					"url": "#"
+					"url": "/care-finder"
 				},
 				{
 					"text": "Expolre services",
@@ -162,7 +162,7 @@
 					"text": "Find your health expert",
 					"variant": "solid",
 					"color": "white",
-					"url": "/appointment"
+					"url": "/care-finder"
 				},
 				{
 					"text": "Contact Our Support",
