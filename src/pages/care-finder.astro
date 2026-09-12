@@ -7,9 +7,11 @@ const categories = [...new Set(conditions.map((item) => item.category))].sort();
 ---
 
 <Layout
-  title="Care Finder | RaiderCare"
-  description="Find the appropriate university or nearby care resource."
+	title="Care Finder | RaiderCare"
+	description="Find the appropriate university or nearby care resource."
+	requiresAuth={true}
 >
+
   <section class="finder-hero">
     <Container>
       <div>

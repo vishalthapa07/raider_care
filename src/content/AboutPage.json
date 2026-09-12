@@ -1,5 +1,5 @@
 {
-	"pageTitle": "About us | RaiderCare",
+	"pageTitle": "About | RaiderCare",
 	"sections": {
 		"hero": {
 			"config": {
@@ -7,46 +7,21 @@
 				"background": "bg-1",
 				"container": "flex"
 			},
-			"title": "Dedicated to Your <strong>Health</strong> and <strong>Wellbeing</strong>",
-			"subtitle": "Since our inception, RaiderCare has been at the forefront of medical innovation. We combine world-class expertise with a deeply personal touch, ensuring every patient receives the specialized care they deserve.",
+			"title": "Healthcare Information Should Lead to <strong>Action</strong>, Not More Searching",
+			"subtitle": "RaiderCare was created around a simple problem: when students feel unwell, finding the right next step can be harder than it should be. Health information is everywhere, but knowing what to do with that information is not always clear. RaiderCare is our attempt to make that journey simpler, safer, and more understandable.",
 			"image": "team.webp",
 			"buttons": [
 				{
-					"text": "Find your health expert",
+					"text": "See How RaiderCare Helps",
 					"variant": "solid",
 					"color": "primary",
-					"url": "/care-finder"
+					"url": "/services"
 				},
 				{
-					"text": "Expolre services",
+					"text": "Try Care Finder",
 					"variant": "outline",
 					"color": "primary",
-					"url": "/services"
-				}
-				
-			]
-		},
-
-		"statistics": {
-			"config": {
-				"class": "section--primary"
-			},
-			"data": [
-				{
-					"amount": "12+",
-					"caption": "Years of Experience"
-				},
-				{
-					"amount": "50k+",
-					"caption": "Happy Patients"
-				},
-				{
-					"amount": "85",
-					"caption": "Expert Doctors"
-				},
-				{
-					"amount": "24/7",
-					"caption": "Modern Facilities"
+					"url": "/care-finder"
 				}
 			]
 		},
@@ -54,98 +29,75 @@
 		"values": {
 			"config": {
 				"class": "section--centered",
-				"background": "bg-1"
+				"background": "bg-2"
 			},
 			"sectionHeader": {
-				"title": "Our Core Values",
-				"subtitle": "Guided by a commitment to excellence and a passion for healing, we strive to set new benchmarks in modern healthcare."
+				"title": "What We Believe",
+				"subtitle": "RaiderCare is built around principles that keep the experience useful, responsible, and focused on helping students make informed decisions."
 			},
 			"items": [
 				{
-					"icon": "care",
-					"title": "Our Mission",
-					"text": "To provide compassionate, patient-centered healthcare through a combination of cutting-edge technology and human-centric expertise. We treat the person, not just the symptom."
+					"icon": "bulb",
+					"title": "Clarity Over Information Overload",
+					"text": "Finding health information is easy. Understanding what matters and what to do next is harder. RaiderCare focuses on turning complicated health information into clear and understandable next steps."
 				},
 				{
-					"icon": "eye",
-					"title": "Our Vision",
-					"text": "To lead the future of healthcare as a digital-first, globally recognized medical center that simplifies the patient journey through technology and preventive care."
+					"icon": "safety",
+					"title": "Safety Before Certainty",
+					"text": "RaiderCare is not designed to make definitive medical diagnoses. When symptoms may indicate a serious situation, the priority is recognizing the warning signs and directing the user toward appropriate professional or emergency care."
 				},
 				{
 					"icon": "heart",
-					"title": "Our Compassion",
-					"text": "We put people first in everything we do. Every patient deserves empathy, respect, and personalized care delivered with kindness and understanding."
-				},
-				{
-					"icon": "bulb",
-					"title": "Our Innovation",
-					"text": "We embrace modern technology to improve healthcare outcomes and simplify every step of the patient experience. Innovation helps us provide faster, smarter, and more accessible care."
-				},
-				{
-					"icon": "handshake",
-					"title": "Our Collaboration",
-					"text": "Great healthcare is built on teamwork. Our specialists work together across disciplines to ensure every patient receives comprehensive and coordinated treatment."
+					"title": "Human Care Stays at the Center",
+					"text": "Technology can help people navigate healthcare, but it should never replace qualified medical professionals. RaiderCare is designed to help users reach the right people, not replace them."
 				},
 				{
 					"icon": "accessibility",
-					"title": "Our Accessibility",
-					"text": "Healthcare should be simple, convenient, and available when it's needed most. We strive to remove barriers through digital solutions, flexible scheduling, and patient-focused services."
+					"title": "Built Around Student Needs",
+					"text": "Students often need answers quickly and may not know which type of care is appropriate. RaiderCare is designed to make that first decision easier through a simple and approachable experience."
+				},
+				{
+					"icon": "feature",
+					"title": "Privacy by Design",
+					"text": "Health-related concerns can be personal. RaiderCare is being built with secure authentication, protected user access, and thoughtful handling of user information as core parts of the experience."
+				},
+				{
+					"icon": "handshake",
+					"title": "Technology That Connects",
+					"text": "The goal isn't to keep users inside an app. The goal is to help them confidently move from a concern to an appropriate real-world healthcare resource when professional support is needed."
 				}
 			]
 		},
 
 		"journey": {
 			"config": {
-				"class": "section--centered"
+				"class": "section--centered",
+				"background": "bg-1"
 			},
 			"sectionHeader": {
-				"title": "Our Journey",
-				"subtitle": "A legacy of trust and innovation built over two decades."
+				"title": "Why We Built RaiderCare",
+				"subtitle": "The idea started with a familiar problem: health information is easy to find, but the right next step often isn't."
 			},
 			"items": [
 				{
-					"year": 2008,
-					"title": "Foundation",
-					"text": "RaiderCare opens its doors as a specialized family practice in the heart of the city."
+					"year": "01",
+					"title": "We Saw the Problem",
+					"text": "When students experience unfamiliar symptoms, their first reaction is often to search online. That can quickly turn into dozens of articles, conflicting explanations, and uncertainty about whether the situation is minor, urgent, or somewhere in between."
 				},
 				{
-					"year": 2015,
-					"title": "Surgical Wing Launch",
-					"text": "Opening of our state-of-the-art surgical suites featuring advanced robotic-assisted platforms."
+					"year": "02",
+					"title": "We Asked a Different Question",
+					"text": "Instead of building another place that simply provides more health information, we asked: what if technology could help students understand what action to take next?"
 				},
 				{
-					"year": 2022,
-					"title": "Global Excellence Award",
-					"text": "Recognized as the leading private medical center for patient safety and clinical outcomes."
-				}
-			]
-		},
-
-		"technology": {
-			"config": {
-				"background": "bg-1",
-				"container": "flex"
-			},
-			"sectionHeader": {
-				"title": "Medical Technology at Its Peak",
-				"subtitle": "We invest in the latest medical infrastructure to ensure earlier detection, safer procedures, and faster recovery times for our patients."
-			},
-			"image": "/images/technology.webp",
-			"items": [
-				{
-					"icon": "robo-arm",
-					"title": "Robotic-Assisted Surgery",
-					"text": "Minimally invasive procedures with sub-millimeter precision."
+					"year": "03",
+					"title": "RaiderCare Took Shape",
+					"text": "That idea became RaiderCare: a health-navigation experience designed to listen to a user's concern, consider important warning signs, provide basic guidance, and point them toward an appropriate type of care."
 				},
 				{
-					"icon": "microscope",
-					"title": "Next-Gen Diagnostics",
-					"text": "AI-enhanced imaging for accurate and early diagnosis."
-				},
-				{
-					"icon": "safety",
-					"title": "Verified Safety Protocols",
-					"text": "Adhering to the highest international hospital safety standards."
+					"year": "04",
+					"title": "Beyond the Feed",
+					"text": "RaiderCare reflects our belief that useful technology should move people beyond endless searching and scrolling. The experience is designed around reaching a decision and taking the next appropriate step."
 				}
 			]
 		},
@@ -155,20 +107,20 @@
 				"class": "section--centered",
 				"background": "bg-2"
 			},
-			"title": "Join Our Community of Healthy Patients",
-			"text": "Ready to experience the future of healthcare? Book your initial consultation with one of our world-class specialists today.",
+			"title": "From Uncertainty to a Clearer Next Step",
+			"text": "RaiderCare is designed to help students spend less time searching for answers and more time understanding where to turn for appropriate care.",
 			"buttons": [
 				{
-					"text": "Find your health expert",
+					"text": "Explore RaiderCare",
 					"variant": "solid",
 					"color": "white",
 					"url": "/care-finder"
 				},
 				{
-					"text": "Contact Our Support",
+					"text": "View Our Services",
 					"variant": "outline",
 					"color": "white",
-					"url": "/contact"
+					"url": "/services"
 				}
 			]
 		}

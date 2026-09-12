@@ -1,6 +1,7 @@
 ---
 import { withBase } from "@lib/urls";
 import siteConfig from "../../siteConfig";
+
 import Container from "@ui/Container.astro";
 import Button from "@ui/Button.astro";
 import Logo from "@ui/Logo.astro";
@@ -10,6 +11,7 @@ import Burger from "@ui/Burger.astro";
 <header class="header" id="header">
   <Container>
     <Logo />
+
     <nav class="header-nav" id="header-nav">
       <ul class="main-menu">
         {
@@ -23,17 +25,111 @@ import Burger from "@ui/Burger.astro";
         }
       </ul>
 
-      <Button id="chat-with-us-button" color="primary" variant="solid"
-        >Chat with us</Button
-      >
+      <!-- Chat button -->
+      <Button href={withBase("/appointment")} color="primary" variant="solid">
+        Chat with us
+      </Button>
+
+      <!-- Logged-in user profile -->
+      <div class="auth-profile" id="auth-profile" hidden>
+        <button
+          type="button"
+          class="profile-button"
+          id="profile-button"
+          aria-expanded="false"
+          aria-controls="profile-menu"
+          aria-label="Open user profile"
+        >
+          <span class="profile-avatar" id="profile-avatar">
+            <span id="profile-initials">U</span>
+
+            <img id="profile-image" src="" alt="" hidden />
+          </span>
+
+          <span class="profile-name" id="profile-name"> Account </span>
+
+          <svg
+            class="profile-chevron"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 9L12 15L18 9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <!-- Profile dropdown -->
+        <div class="profile-menu" id="profile-menu" hidden>
+          <div class="profile-menu__user">
+            <span class="profile-menu__avatar" id="menu-avatar">
+              <span id="menu-initials">U</span>
+
+              <img id="menu-image" src="" alt="" hidden />
+            </span>
+
+            <div class="profile-menu__details">
+              <strong id="menu-name"> User </strong>
+
+              <span id="menu-email"></span>
+            </div>
+          </div>
+
+          <div class="profile-menu__divider"></div>
+
+          <button type="button" class="logout-button" id="logout-button">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 21H5C3.895 21 3 20.105 3 19V5C3 3.895 3.895 3 5 3H9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"></path>
+
+              <path
+                d="M16 17L21 12L16 7"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+
+              <path
+                d="M21 12H9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"></path>
+            </svg>
+
+            Log out
+          </button>
+        </div>
+      </div>
     </nav>
+
     <Burger />
   </Container>
 </header>
 
 <script>
+  import { getAuth0Client, getBaseUrl } from "../../lib/auth0";
+
   const body = document.body;
   const header = document.getElementById("header");
+
+  /* -------------------------
+	   HEADER SCROLL
+	------------------------- */
 
   if (header) {
     const onScroll = () => {
@@ -41,59 +137,301 @@ import Burger from "@ui/Burger.astro";
     };
 
     onScroll();
+
     body.addEventListener("scroll", onScroll, { passive: true });
   }
+
+  /* -------------------------
+	   AUTH0 USER PROFILE
+	------------------------- */
+
+  async function loadUserProfile() {
+    try {
+      const auth0 = await getAuth0Client();
+
+      const authenticated = await auth0.isAuthenticated();
+
+      const profile = document.getElementById("auth-profile");
+
+      if (!(profile instanceof HTMLElement)) {
+        return;
+      }
+
+      /*
+       * Logged out
+       */
+      if (!authenticated) {
+        profile.hidden = true;
+
+        return;
+      }
+
+      /*
+       * Logged in
+       */
+      const user = await auth0.getUser();
+
+      if (!user) {
+        profile.hidden = true;
+        return;
+      }
+
+      profile.hidden = false;
+
+      const displayName = user.name || user.nickname || user.email || "User";
+
+      const email = user.email || "";
+
+      const initials =
+        displayName
+          .split(" ")
+          .filter(Boolean)
+          .slice(0, 2)
+          .map((part) => part.charAt(0))
+          .join("")
+          .toUpperCase() || "U";
+
+      /* Header name */
+
+      const profileName = document.getElementById("profile-name");
+
+      if (profileName) {
+        /*
+         * Only first name in header
+         */
+        profileName.textContent = displayName.split(" ")[0];
+      }
+
+      /* Dropdown name */
+
+      const menuName = document.getElementById("menu-name");
+
+      if (menuName) {
+        menuName.textContent = displayName;
+      }
+
+      /* Email */
+
+      const menuEmail = document.getElementById("menu-email");
+
+      if (menuEmail) {
+        menuEmail.textContent = email;
+      }
+
+      /* Initials */
+
+      const profileInitials = document.getElementById("profile-initials");
+
+      const menuInitials = document.getElementById("menu-initials");
+
+      if (profileInitials) {
+        profileInitials.textContent = initials;
+      }
+
+      if (menuInitials) {
+        menuInitials.textContent = initials;
+      }
+
+      /*
+       * If Auth0 / Google provides
+       * a profile picture, display it.
+       */
+      if (user.picture) {
+        const profileImage = document.getElementById("profile-image");
+
+        const menuImage = document.getElementById("menu-image");
+
+        if (profileImage instanceof HTMLImageElement) {
+          profileImage.src = user.picture;
+
+          profileImage.alt = `${displayName} profile`;
+
+          profileImage.hidden = false;
+
+          if (profileInitials) {
+            profileInitials.hidden = true;
+          }
+        }
+
+        if (menuImage instanceof HTMLImageElement) {
+          menuImage.src = user.picture;
+
+          menuImage.alt = `${displayName} profile`;
+
+          menuImage.hidden = false;
+
+          if (menuInitials) {
+            menuInitials.hidden = true;
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Could not load Auth0 user:", error);
+    }
+  }
+
+  /* -------------------------
+	   PROFILE DROPDOWN
+	------------------------- */
+
+  const profileButton = document.getElementById("profile-button");
+
+  const profileMenu = document.getElementById("profile-menu");
+
+  function closeProfileMenu() {
+    if (
+      !(profileMenu instanceof HTMLElement) ||
+      !(profileButton instanceof HTMLElement)
+    ) {
+      return;
+    }
+
+    profileMenu.hidden = true;
+
+    profileButton.setAttribute("aria-expanded", "false");
+  }
+
+  if (
+    profileButton instanceof HTMLButtonElement &&
+    profileMenu instanceof HTMLElement
+  ) {
+    profileButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+
+      const opening = profileMenu.hidden;
+
+      profileMenu.hidden = !opening;
+
+      profileButton.setAttribute("aria-expanded", String(opening));
+    });
+
+    profileMenu.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", closeProfileMenu);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeProfileMenu();
+      }
+    });
+  }
+
+  /* -------------------------
+	   LOGOUT
+	------------------------- */
+
+  const logoutButton = document.getElementById("logout-button");
+
+  if (logoutButton instanceof HTMLButtonElement) {
+    logoutButton.addEventListener("click", async () => {
+      try {
+        const auth0 = await getAuth0Client();
+
+        /*
+         * Auth0 clears the session
+         * and sends user HOME.
+         */
+        await auth0.logout({
+          logoutParams: {
+            returnTo: getBaseUrl(),
+          },
+        });
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
+    });
+  }
+
+  /*
+   * Load profile when page loads.
+   */
+  loadUserProfile();
+
+  /*
+   * Also refresh profile after login
+   * without requiring a reload.
+   */
+  window.addEventListener("raidercare:auth-changed", loadUserProfile);
 </script>
 
 <style>
   .header {
     z-index: 2000;
+
     position: absolute;
+
     top: 0;
     left: 0;
     right: 0;
+
     padding: 0 2rem;
+
     height: var(--header-height);
+
     background: var(--color-white);
+
     transition: all 0.3s ease;
 
     &.header--scrolled {
       --header-height: 6rem;
 
       position: fixed;
+
       box-shadow: 0 0 0.5rem 0.2rem var(--color-shadow);
     }
 
     .container {
       display: flex;
+
       height: 100%;
+
       flex: 1 0 100%;
+
       align-items: center;
     }
   }
 
   .header-nav {
     display: flex;
+
     flex-grow: 1;
+
+    align-items: center;
+
     justify-content: flex-end;
+
+    gap: 1.4rem;
 
     @media screen and (max-width: 1024px) {
       z-index: 1000;
+
       position: absolute;
+
       top: 0;
       right: 0;
+
       width: 100vw;
       height: 100dvh;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
+
       background-color: #faf8ff;
+
       transform: translateX(100%);
+
       visibility: hidden;
+
       transition: all 0.5s ease-in-out;
 
       body.menu-open & {
         transform: translateX(0);
+
         visibility: visible;
       }
 
@@ -105,27 +443,293 @@ import Burger from "@ui/Burger.astro";
 
   .main-menu {
     display: flex;
+
     margin-inline: auto;
+
     gap: 3.2rem;
+
     align-items: center;
 
     @media screen and (max-width: 1024px) {
-      margin-bottom: 10vh;
+      margin-inline: 0;
+
+      margin-bottom: 3rem;
+
       flex-direction: column;
+
       align-items: center;
+
       justify-content: center;
     }
   }
 
   .main-menu__link {
     color: var(--color-text);
+
     font-weight: 500;
+
     text-decoration: none;
-    trnasition: all 0.2s ease;
+
+    transition: all 0.2s ease;
 
     &:hover {
       color: var(--color-primary);
+
       text-decoration: underline;
+    }
+  }
+
+  /* =========================
+	   USER PROFILE
+	========================= */
+
+  .auth-profile {
+    position: relative;
+  }
+
+  .profile-button {
+    display: inline-flex;
+
+    min-height: 4.8rem;
+
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+
+    gap: 0.8rem;
+
+    align-items: center;
+
+    border: 1px solid #e4e8f0;
+
+    border-radius: 3rem;
+
+    color: var(--color-title);
+
+    background: var(--color-white);
+
+    cursor: pointer;
+
+    font: inherit;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+
+      box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .profile-avatar,
+  .profile-menu__avatar {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    color: var(--color-white);
+
+    background: var(--color-primary);
+
+    font-weight: 700;
+
+    border-radius: 50%;
+  }
+
+  .profile-avatar {
+    width: 3.8rem;
+
+    height: 3.8rem;
+
+    font-size: 1.3rem;
+  }
+
+  .profile-menu__avatar {
+    width: 4.8rem;
+
+    height: 4.8rem;
+
+    flex: 0 0 auto;
+
+    font-size: 1.5rem;
+  }
+
+  .profile-avatar img,
+  .profile-menu__avatar img {
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    inset: 0;
+  }
+
+  .profile-name {
+    max-width: 10rem;
+
+    overflow: hidden;
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .profile-chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .profile-button[aria-expanded="true"] .profile-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* =========================
+	   PROFILE DROPDOWN
+	========================= */
+
+  .profile-menu {
+    position: absolute;
+
+    top: calc(100% + 1rem);
+
+    right: 0;
+
+    width: 29rem;
+
+    padding: 1.6rem;
+
+    background: var(--color-white);
+
+    border: 1px solid #e7eaf0;
+
+    border-radius: 1.6rem;
+
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.13);
+  }
+
+  .profile-menu__user {
+    display: flex;
+
+    gap: 1.2rem;
+
+    align-items: center;
+  }
+
+  .profile-menu__details {
+    display: flex;
+
+    min-width: 0;
+
+    flex-direction: column;
+
+    gap: 0.3rem;
+  }
+
+  .profile-menu__details strong {
+    overflow: hidden;
+
+    color: var(--color-title);
+
+    font-size: 1.5rem;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .profile-menu__details span {
+    overflow: hidden;
+
+    color: var(--color-text);
+
+    font-size: 1.25rem;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+  .profile-menu__divider {
+    height: 1px;
+
+    margin: 1.4rem 0;
+
+    background: #eceef3;
+  }
+
+  .logout-button {
+    display: flex;
+
+    width: 100%;
+
+    padding: 1.1rem 1.2rem;
+
+    gap: 1rem;
+
+    align-items: center;
+
+    color: #c62828;
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: 1rem;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #fff1f1;
+    }
+  }
+
+  /* =========================
+	   MOBILE
+	========================= */
+
+  @media screen and (max-width: 1024px) {
+    .auth-profile {
+      margin-top: 1rem;
+    }
+
+    .profile-menu {
+      z-index: 10;
+
+      top: calc(100% + 0.8rem);
+
+      right: 50%;
+
+      transform: translateX(50%);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .profile-name {
+      display: none;
+    }
+
+    .profile-menu {
+      width: min(29rem, calc(100vw - 3rem));
     }
   }
 </style>

@@ -3,10 +3,8 @@ import "../styles/global.css";
 
 import Layout from "@layouts/Layout.astro";
 import HeroSection from "@/components/blocks/HeroSection.astro";
-import StatisticsSection from "@/components/blocks/StatisticsSection.astro";
 import ValuesSection from "@/components/blocks/ValuesSection.astro";
 import JourneySection from "@/components/blocks/JourneySection.astro";
-import TechologySection from "@/components/blocks/TechologySection.astro";
 import CtaSection from "@/components/blocks/CtaSection.astro";
 
 import data from "../content/AboutPage.json";
@@ -14,20 +12,13 @@ import data from "../content/AboutPage.json";
 
 <Layout
 	title={data.pageTitle}
-	description=`${data.pageTitle} description place here`
+	description="Learn why RaiderCare was created and how we're building a safer, simpler way for students to move from health uncertainty to the right next step."
 >
 	{data.sections.hero && <HeroSection data={data.sections.hero} />}
-	{
-		data.sections.statistics && (
-			<StatisticsSection data={data.sections.statistics} />
-		)
-	}
+
 	{data.sections.values && <ValuesSection data={data.sections.values} />}
+
 	{data.sections.journey && <JourneySection data={data.sections.journey} />}
-	{
-		data.sections.technology && (
-			<TechologySection data={data.sections.technology} />
-		)
-	}
+
 	{data.sections.cta && <CtaSection data={data.sections.cta} />}
 </Layout>

@@ -1,0 +1,273 @@
+<script>
+	import {
+		getAuth0Client,
+		getBaseUrl,
+	} from "../../lib/auth0";
+
+
+	async function initializeAuth() {
+
+		try {
+
+			const auth0 =
+				await getAuth0Client();
+
+
+			/*
+			 * Handle Auth0 redirect callback
+			 */
+			const query =
+				new URLSearchParams(
+					window.location.search
+				);
+
+
+			const isAuthCallback =
+				query.has("state") &&
+				(
+					query.has("code") ||
+					query.has("error")
+				);
+
+
+			if (isAuthCallback) {
+
+				try {
+
+					const result =
+						await auth0.handleRedirectCallback();
+
+
+					window.history.replaceState(
+						{},
+						document.title,
+						window.location.pathname
+					);
+
+
+					window.dispatchEvent(
+						new Event(
+							"raidercare:auth-changed"
+						)
+					);
+
+
+					const returnTo =
+						result.appState?.returnTo;
+
+
+					if (
+						typeof returnTo ===
+						"string"
+					) {
+
+						window.location.replace(
+							returnTo
+						);
+
+						return;
+
+					}
+
+				}
+				catch (error) {
+
+					console.error(
+						"Auth0 callback error:",
+						error
+					);
+
+				}
+
+			}
+
+
+			let loggedIn =
+				await auth0.isAuthenticated();
+
+
+			/*
+			 * Pages with:
+			 *
+			 * requiresAuth={true}
+			 *
+			 * cannot be viewed logged out.
+			 */
+			const pageRequiresAuth =
+				document.body.dataset
+					.requiresAuth === "true";
+
+
+			if (
+				pageRequiresAuth &&
+				!loggedIn
+			) {
+
+				await auth0.loginWithRedirect({
+
+					appState: {
+						returnTo:
+							window.location.href,
+					},
+
+					authorizationParams: {
+						redirect_uri:
+							getBaseUrl(),
+					},
+
+				});
+
+
+				return;
+
+			}
+
+
+			/*
+			 * Protect links going to
+			 * /care-finder
+			 */
+			document.addEventListener(
+				"click",
+				async (event) => {
+
+					const target =
+						event.target;
+
+
+					if (
+						!(
+							target
+							instanceof Element
+						)
+					) {
+						return;
+					}
+
+
+					const link =
+						target.closest<
+							HTMLAnchorElement
+						>("a[href]");
+
+
+					if (!link) {
+						return;
+					}
+
+
+					const destination =
+						new URL(
+							link.href,
+							window.location.href
+						);
+
+
+					const careFinderPath =
+						new URL(
+							"care-finder",
+							getBaseUrl()
+						)
+						.pathname
+						.replace(/\/$/, "");
+
+
+					const destinationPath =
+						destination.pathname
+							.replace(/\/$/, "");
+
+
+					/*
+					 * Ignore all other links.
+					 */
+					if (
+						destinationPath !==
+						careFinderPath
+					) {
+						return;
+					}
+
+
+					/*
+					 * If already logged in,
+					 * let the link work normally.
+					 */
+					loggedIn =
+						await auth0
+							.isAuthenticated();
+
+
+					if (loggedIn) {
+						return;
+					}
+
+
+					/*
+					 * User logged out.
+					 * Stop navigation and
+					 * show Auth0.
+					 */
+					event.preventDefault();
+
+
+					try {
+
+						await auth0.loginWithPopup();
+
+
+						loggedIn =
+							await auth0
+								.isAuthenticated();
+
+
+						if (loggedIn) {
+
+							window.dispatchEvent(
+								new Event(
+									"raidercare:auth-changed"
+								)
+							);
+
+
+							window.location.assign(
+								link.href
+							);
+
+						}
+
+					}
+					catch (error: any) {
+
+						if (
+							error?.error ===
+							"popup_closed_by_user"
+						) {
+							return;
+						}
+
+
+						console.error(
+							"Auth0 login error:",
+							error
+						);
+
+					}
+
+				}
+			);
+
+		}
+		catch (error) {
+
+			console.error(
+				"Unable to initialize Auth0:",
+				error
+			);
+
+		}
+
+	}
+
+
+	initializeAuth();
+</script>
