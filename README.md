@@ -1,79 +1,77 @@
-# RaiderCare — Medical & Healthcare Template for Astro
+# RaiderCare
 
-RaiderCare is a modern and responsive website template built with Astro, designed for healthcare businesses, private clinics, hospitals, medical centers, dentists, and healthcare professionals.
+<!-- =========================
+     PROJECT DESCRIPTION
+========================= -->
 
-<!-- Live demo: https://medicsare.netlify.app/ -->
+RaiderCare is a student-focused health navigation web application built for HackWesTX at Texas Tech University.
 
-## ✨ Features
+The platform helps users describe their symptoms, understand possible next steps, find an appropriate type of healthcare professional, and access emergency help when needed.
 
-- Fully responsive design
-- Built with Astro
-- Fast page loading and excellent performance
-- SEO-friendly structure
-- Modern and clean UI
-- Reusable components
-- Services pages
-- Doctors and specialists pages
-- Testimonials section
-- Contact form
-- FAQ section
-- Mobile-friendly navigation
+RaiderCare is designed for health navigation and educational guidance, not medical diagnosis.
 
-## 🚀 Getting Started
 
-Install dependencies:
+<!-- =========================
+     TECH STACK
+========================= -->
 
-```bash
-npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open:
-
-```text
-http://localhost:4321
-```
-
-## 📦 Build for Production
-
-```bash
-npm run build
-```
-
-Preview the production build:
-
-```bash
-npm run preview
-```
-
-## 🛠️ Technologies
+## Tech Stack
 
 - Astro
 - TypeScript
-- CSS / SCSS
-- Markdown
+- JavaScript
+- HTML
+- CSS
+- Auth0
+- Auth0 SPA SDK
+- Astro Icon
+- Astro SEO
 - Vite
 
-## 🎨 Customization
 
-You can easily customize:
+<!-- =========================
+     PROJECT SETUP
+========================= -->
 
-- Colors
-- Typography
-- Content
-- Images
-- Sections and layouts
-- SEO metadata
+## Getting Started
 
-## 📄 License
+First, clone the repository:
 
-Feel free to use this template for personal and commercial projects.
+```bash
+git clone https://github.com/vishalthapa07/raider_care.git
 
----
+cd raider_care
 
-Built with ❤️ and Astro.
+npm install
+
+npm install @auth0/auth0-spa-js
+
+
+<!-- ========================= ENVIRONMENT VARIABLES ========================= -->
+
+
+Environment Variables
+
+Create a file named:
+.env
+- inside the root folder of the project.
+
+PUBLIC_AUTH0_DOMAIN=YOUR_AUTH0_DOMAIN
+PUBLIC_AUTH0_CLIENT_ID=YOUR_AUTH0_CLIENT_ID
+
+Run the Project
+
+Start the Astro development server:
+
+npm run dev
+
+Then open the project in your browser:
+http://localhost:4321
+
+
+.env
+.env.production
+
+
+
+
