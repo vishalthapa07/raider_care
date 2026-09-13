@@ -108,3 +108,7 @@ RaiderCare is intended for educational and health-navigation purposes only. It d
 For a life-threatening emergency, call **911**.
 
 For a mental-health or suicide crisis, call or text **988**.
+
+## Video Demo
+
+[Watch the RaiderCare video demo](https://texastechuniversity-my.sharepoint.com/:v:/g/personal/vthapa_ttu_edu/IQB0X8C5ynyIRZZ-ShtUNwpfAaKRl93Cz6CKL9f_h6v8Jm4?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=d9X50a)
